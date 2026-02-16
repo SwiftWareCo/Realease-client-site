@@ -1,0 +1,456 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ChevronDown } from "lucide-react";
+
+interface NavbarProps {
+    onOpenDemo: () => void;
+}
+
+export default function Navbar({ onOpenDemo }: NavbarProps) {
+    const [scrolled, setScrolled] = useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
+    const [productsOpen, setProductsOpen] = useState(false);
+    const [resourcesOpen, setResourcesOpen] = useState(false);
+
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 20);
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+
+    const products = [
+        { name: "CRM & Lead Management", href: "#crm" },
+        { name: "AI Receptionist", href: "#ai-receptionist" },
+        { name: "SMS Bot", href: "#sms-bot" },
+        { name: "Smart Campaigns", href: "#campaigns" },
+        { name: "Calendar & Tasks", href: "#calendar" },
+        { name: "Analytics Dashboard", href: "#analytics" },
+    ];
+
+    const resources = [
+        { name: "About Us", href: "#about" },
+        { name: "Blog", href: "#blog" },
+        { name: "Case Studies", href: "#cases" },
+        { name: "Help Center", href: "#help" },
+    ];
+
+    return (
+        <>
+            <motion.nav
+                initial={{ y: -100 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="navbar"
+                style={{
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    zIndex: 1000,
+                    padding: scrolled ? "12px 24px" : "18px 24px",
+                    background: scrolled
+                        ? "rgba(255,255,255,0.85)"
+                        : "rgba(255,255,255,0.5)",
+                    backdropFilter: "blur(20px)",
+                    WebkitBackdropFilter: "blur(20px)",
+                    borderBottom: scrolled
+                        ? "1px solid rgba(226,232,240,0.6)"
+                        : "1px solid transparent",
+                    transition: "all 0.3s ease",
+                }}
+            >
+                <div
+                    style={{
+                        maxWidth: 1200,
+                        margin: "0 auto",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                    }}
+                >
+                    {/* Logo */}
+                    <a
+                        href="#"
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 8,
+                            textDecoration: "none",
+                            fontSize: "1.35rem",
+                            fontWeight: 800,
+                            color: "#0F172A",
+                            letterSpacing: "-0.03em",
+                            fontFamily: "var(--font-dm-sans), sans-serif",
+                        }}
+                    >
+                        <span
+                            style={{
+                                background: "linear-gradient(135deg, #4F46E5, #7C3AED)",
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
+                            }}
+                        >
+                            real
+                        </span>
+                        ease
+                    </a>
+
+                    {/* Desktop Nav */}
+                    <div
+                        className="desktop-nav"
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 32,
+                        }}
+                    >
+                        {/* Products Dropdown */}
+                        <div
+                            style={{ position: "relative" }}
+                            onMouseEnter={() => setProductsOpen(true)}
+                            onMouseLeave={() => setProductsOpen(false)}
+                        >
+                            <button
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: 4,
+                                    background: "none",
+                                    border: "none",
+                                    fontSize: "0.9rem",
+                                    fontWeight: 500,
+                                    color: "#475569",
+                                    cursor: "pointer",
+                                    padding: "8px 0",
+                                    fontFamily: "var(--font-inter), sans-serif",
+                                }}
+                            >
+                                Products <ChevronDown size={14} />
+                            </button>
+                            <AnimatePresence>
+                                {productsOpen && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 8 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: 8 }}
+                                        transition={{ duration: 0.2 }}
+                                        style={{
+                                            position: "absolute",
+                                            top: "100%",
+                                            left: -16,
+                                            background: "white",
+                                            borderRadius: 12,
+                                            boxShadow:
+                                                "0 20px 60px rgba(0,0,0,0.12), 0 4px 20px rgba(0,0,0,0.06)",
+                                            padding: "8px",
+                                            minWidth: 220,
+                                            border: "1px solid rgba(226,232,240,0.6)",
+                                        }}
+                                    >
+                                        {products.map((item) => (
+                                            <a
+                                                key={item.name}
+                                                href={item.href}
+                                                style={{
+                                                    display: "block",
+                                                    padding: "10px 16px",
+                                                    fontSize: "0.875rem",
+                                                    color: "#334155",
+                                                    textDecoration: "none",
+                                                    borderRadius: 8,
+                                                    transition: "background 0.15s",
+                                                    fontFamily: "var(--font-inter), sans-serif",
+                                                }}
+                                                onMouseEnter={(e) =>
+                                                    (e.currentTarget.style.background = "#F1F5F9")
+                                                }
+                                                onMouseLeave={(e) =>
+                                                    (e.currentTarget.style.background = "transparent")
+                                                }
+                                            >
+                                                {item.name}
+                                            </a>
+                                        ))}
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
+
+                        {/* Resources Dropdown */}
+                        <div
+                            style={{ position: "relative" }}
+                            onMouseEnter={() => setResourcesOpen(true)}
+                            onMouseLeave={() => setResourcesOpen(false)}
+                        >
+                            <button
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: 4,
+                                    background: "none",
+                                    border: "none",
+                                    fontSize: "0.9rem",
+                                    fontWeight: 500,
+                                    color: "#475569",
+                                    cursor: "pointer",
+                                    padding: "8px 0",
+                                    fontFamily: "var(--font-inter), sans-serif",
+                                }}
+                            >
+                                Resources <ChevronDown size={14} />
+                            </button>
+                            <AnimatePresence>
+                                {resourcesOpen && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 8 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: 8 }}
+                                        transition={{ duration: 0.2 }}
+                                        style={{
+                                            position: "absolute",
+                                            top: "100%",
+                                            left: -16,
+                                            background: "white",
+                                            borderRadius: 12,
+                                            boxShadow:
+                                                "0 20px 60px rgba(0,0,0,0.12), 0 4px 20px rgba(0,0,0,0.06)",
+                                            padding: "8px",
+                                            minWidth: 180,
+                                            border: "1px solid rgba(226,232,240,0.6)",
+                                        }}
+                                    >
+                                        {resources.map((item) => (
+                                            <a
+                                                key={item.name}
+                                                href={item.href}
+                                                style={{
+                                                    display: "block",
+                                                    padding: "10px 16px",
+                                                    fontSize: "0.875rem",
+                                                    color: "#334155",
+                                                    textDecoration: "none",
+                                                    borderRadius: 8,
+                                                    transition: "background 0.15s",
+                                                    fontFamily: "var(--font-inter), sans-serif",
+                                                }}
+                                                onMouseEnter={(e) =>
+                                                    (e.currentTarget.style.background = "#F1F5F9")
+                                                }
+                                                onMouseLeave={(e) =>
+                                                    (e.currentTarget.style.background = "transparent")
+                                                }
+                                            >
+                                                {item.name}
+                                            </a>
+                                        ))}
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
+
+                        <a
+                            href="#pricing"
+                            style={{
+                                fontSize: "0.9rem",
+                                fontWeight: 500,
+                                color: "#475569",
+                                textDecoration: "none",
+                                padding: "8px 0",
+                                fontFamily: "var(--font-inter), sans-serif",
+                            }}
+                        >
+                            Pricing
+                        </a>
+
+                        <a
+                            href="#contact"
+                            style={{
+                                fontSize: "0.9rem",
+                                fontWeight: 500,
+                                color: "#475569",
+                                textDecoration: "none",
+                                padding: "8px 0",
+                                fontFamily: "var(--font-inter), sans-serif",
+                            }}
+                        >
+                            Contact
+                        </a>
+
+                        <button
+                            onClick={onOpenDemo}
+                            style={{
+                                padding: "10px 24px",
+                                background: "linear-gradient(135deg, #4F46E5, #7C3AED)",
+                                color: "white",
+                                border: "none",
+                                borderRadius: 50,
+                                fontSize: "0.875rem",
+                                fontWeight: 600,
+                                cursor: "pointer",
+                                boxShadow: "0 4px 20px rgba(79,70,229,0.3)",
+                                transition: "all 0.3s ease",
+                                fontFamily: "var(--font-inter), sans-serif",
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.transform = "translateY(-2px)";
+                                e.currentTarget.style.boxShadow =
+                                    "0 8px 30px rgba(79,70,229,0.4)";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.transform = "translateY(0)";
+                                e.currentTarget.style.boxShadow =
+                                    "0 4px 20px rgba(79,70,229,0.3)";
+                            }}
+                        >
+                            Book a Demo
+                        </button>
+                    </div>
+
+                    {/* Mobile Toggle */}
+                    <button
+                        className="mobile-toggle"
+                        onClick={() => setMobileOpen(!mobileOpen)}
+                        style={{
+                            display: "none",
+                            background: "none",
+                            border: "none",
+                            cursor: "pointer",
+                            color: "#0F172A",
+                        }}
+                    >
+                        {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </div>
+            </motion.nav>
+
+            {/* Mobile Menu */}
+            <AnimatePresence>
+                {mobileOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        style={{
+                            position: "fixed",
+                            top: 60,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            background: "rgba(255,255,255,0.98)",
+                            backdropFilter: "blur(20px)",
+                            zIndex: 999,
+                            padding: "32px 24px",
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: 8,
+                        }}
+                    >
+                        <p
+                            style={{
+                                fontSize: "0.75rem",
+                                fontWeight: 600,
+                                color: "#94A3B8",
+                                textTransform: "uppercase",
+                                letterSpacing: "0.08em",
+                                marginBottom: 4,
+                            }}
+                        >
+                            Products
+                        </p>
+                        {products.map((item) => (
+                            <a
+                                key={item.name}
+                                href={item.href}
+                                onClick={() => setMobileOpen(false)}
+                                style={{
+                                    fontSize: "1rem",
+                                    color: "#334155",
+                                    textDecoration: "none",
+                                    padding: "10px 0",
+                                    borderBottom: "1px solid #F1F5F9",
+                                }}
+                            >
+                                {item.name}
+                            </a>
+                        ))}
+                        <p
+                            style={{
+                                fontSize: "0.75rem",
+                                fontWeight: 600,
+                                color: "#94A3B8",
+                                textTransform: "uppercase",
+                                letterSpacing: "0.08em",
+                                marginTop: 16,
+                                marginBottom: 4,
+                            }}
+                        >
+                            Resources
+                        </p>
+                        {resources.map((item) => (
+                            <a
+                                key={item.name}
+                                href={item.href}
+                                onClick={() => setMobileOpen(false)}
+                                style={{
+                                    fontSize: "1rem",
+                                    color: "#334155",
+                                    textDecoration: "none",
+                                    padding: "10px 0",
+                                    borderBottom: "1px solid #F1F5F9",
+                                }}
+                            >
+                                {item.name}
+                            </a>
+                        ))}
+                        <a
+                            href="#pricing"
+                            onClick={() => setMobileOpen(false)}
+                            style={{
+                                fontSize: "1rem",
+                                color: "#334155",
+                                textDecoration: "none",
+                                padding: "10px 0",
+                                marginTop: 16,
+                                borderBottom: "1px solid #F1F5F9",
+                            }}
+                        >
+                            Pricing
+                        </a>
+                        <button
+                            onClick={() => {
+                                setMobileOpen(false);
+                                onOpenDemo();
+                            }}
+                            style={{
+                                marginTop: 24,
+                                padding: "14px 32px",
+                                background: "linear-gradient(135deg, #4F46E5, #7C3AED)",
+                                color: "white",
+                                border: "none",
+                                borderRadius: 50,
+                                fontSize: "1rem",
+                                fontWeight: 600,
+                                cursor: "pointer",
+                            }}
+                        >
+                            Book a Demo
+                        </button>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            <style jsx global>{`
+        @media (max-width: 768px) {
+          .desktop-nav {
+            display: none !important;
+          }
+          .mobile-toggle {
+            display: block !important;
+          }
+        }
+      `}</style>
+        </>
+    );
+}
