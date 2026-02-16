@@ -4,11 +4,15 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 
-interface NavbarProps {
-    onOpenDemo: () => void;
+declare global {
+    interface Window {
+        Calendly?: { initPopupWidget: (opts: { url: string }) => void };
+    }
 }
 
-export default function Navbar({ onOpenDemo }: NavbarProps) {
+const CALENDLY_URL = "https://calendly.com/amarramadann/30min";
+
+export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
     const [productsOpen, setProductsOpen] = useState(false);
@@ -20,13 +24,20 @@ export default function Navbar({ onOpenDemo }: NavbarProps) {
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
+    const openCalendly = () => {
+        if (window.Calendly) {
+            window.Calendly.initPopupWidget({ url: CALENDLY_URL });
+        } else {
+            window.open(CALENDLY_URL, "_blank");
+        }
+    };
+
     const products = [
-        { name: "CRM & Lead Management", href: "#crm" },
-        { name: "AI Receptionist", href: "#ai-receptionist" },
-        { name: "SMS Bot", href: "#sms-bot" },
-        { name: "Smart Campaigns", href: "#campaigns" },
-        { name: "Calendar & Tasks", href: "#calendar" },
-        { name: "Analytics Dashboard", href: "#analytics" },
+        { name: "CRM & Lead Management", href: "/products/crm" },
+        { name: "AI Receptionist", href: "/products/ai-receptionist" },
+        { name: "SMS Bot", href: "/products/sms-bot" },
+        { name: "Smart Campaigns", href: "/products/smart-campaigns" },
+        { name: "Calendar & Tasks", href: "/products/calendar" },
     ];
 
     const resources = [
@@ -279,7 +290,7 @@ export default function Navbar({ onOpenDemo }: NavbarProps) {
                         </a>
 
                         <button
-                            onClick={onOpenDemo}
+                            onClick={openCalendly}
                             style={{
                                 padding: "10px 24px",
                                 background: "linear-gradient(135deg, #4F46E5, #7C3AED)",
@@ -304,7 +315,7 @@ export default function Navbar({ onOpenDemo }: NavbarProps) {
                                     "0 4px 20px rgba(79,70,229,0.3)";
                             }}
                         >
-                            Book a Demo
+                            Book a Free Demo
                         </button>
                     </div>
 
@@ -421,7 +432,7 @@ export default function Navbar({ onOpenDemo }: NavbarProps) {
                         <button
                             onClick={() => {
                                 setMobileOpen(false);
-                                onOpenDemo();
+                                openCalendly();
                             }}
                             style={{
                                 marginTop: 24,
@@ -435,7 +446,7 @@ export default function Navbar({ onOpenDemo }: NavbarProps) {
                                 cursor: "pointer",
                             }}
                         >
-                            Book a Demo
+                            See It in Action
                         </button>
                     </motion.div>
                 )}
