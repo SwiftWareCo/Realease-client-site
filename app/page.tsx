@@ -17,6 +17,7 @@ import {
   Star,
   Search,
   Settings,
+  Layers,
   UserPlus,
   Sprout,
   HeartHandshake,
@@ -75,7 +76,8 @@ export default function Home() {
 
   /* Scroll-driven cog rotation */
   const { scrollYProgress } = useScroll();
-  const scrollRotate = useTransform(scrollYProgress, [0, 1], [0, 720]);
+  const scrollRotate = useTransform(scrollYProgress, [0, 1], [0, 1800]);
+  const scrollRotateReverse = useTransform(scrollYProgress, [0, 1], [0, -1200]);
 
   /* Load Calendly widget script */
   useEffect(() => {
@@ -111,7 +113,14 @@ export default function Home() {
 
   const aiTools = [
     {
-      icon: <Database size={32} />,
+      icon: (
+        <motion.div
+          animate={{ y: [0, -3, 0, -3, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <Layers size={32} />
+        </motion.div>
+      ),
       title: "AI-Powered CRM",
       slug: "crm",
       desc: "A smart CRM that auto-organizes your leads, tracks every interaction, and surfaces actionable insights — so you can spend less time on busywork.",
@@ -128,7 +137,16 @@ export default function Home() {
       ],
     },
     {
-      icon: <MessageSquare size={32} />,
+      icon: (
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ type: "spring", stiffness: 400, damping: 10, delay: 0.2 }}
+        >
+          <MessageSquare size={32} />
+        </motion.div>
+      ),
       title: "SMS Agent",
       slug: "sms-bot",
       desc: "Intelligent automated text conversations that nurture leads and answer questions in seconds. Feels personal, runs at machine speed.",
@@ -145,7 +163,22 @@ export default function Home() {
       ],
     },
     {
-      icon: <Phone size={32} />,
+      icon: (
+        <motion.div
+          animate={{
+            rotate: [0, -8, 8, -8, 8, -8, 8, -6, 6, -4, 4, -2, 2, 0, 0, 0],
+            x: [0, -2, 2, -2, 2, -2, 2, -1.5, 1.5, -1, 1, -0.5, 0.5, 0, 0, 0],
+          }}
+          transition={{
+            duration: 1.2,
+            repeat: Infinity,
+            repeatDelay: 1.5,
+            ease: "linear",
+          }}
+        >
+          <Phone size={32} />
+        </motion.div>
+      ),
       title: "AI Receptionist",
       slug: "ai-receptionist",
       desc: "Handles inbound and outbound calls around the clock. Qualifies prospects, books appointments, records full transcripts, and auto-updates lead profiles with smart notes.",
@@ -162,7 +195,40 @@ export default function Home() {
       ],
     },
     {
-      icon: <Sparkles size={32} />,
+      icon: (
+        <div style={{ position: "relative", width: 32, height: 32 }}>
+          <Sparkles size={32} />
+          {/* Animated sparkle dots around the icon */}
+          {[
+            { top: -4, left: -4, delay: 0 },
+            { top: -2, right: -4, delay: 0.4 },
+            { bottom: 0, left: 2, delay: 0.8 },
+            { bottom: -3, right: 0, delay: 1.2 },
+          ].map((pos, idx) => (
+            <motion.div
+              key={idx}
+              style={{
+                position: "absolute",
+                width: 5,
+                height: 5,
+                borderRadius: "50%",
+                background: "currentColor",
+                ...pos,
+              }}
+              animate={{
+                scale: [0, 1, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 1.2,
+                repeat: Infinity,
+                delay: pos.delay,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+        </div>
+      ),
       title: "Smart Campaigns",
       slug: "smart-campaigns",
       desc: "AI-crafted outreach sequences that adapt to each lead's behavior. Cold outreach, warm follow-ups, market updates — all automated.",
@@ -179,7 +245,14 @@ export default function Home() {
       ],
     },
     {
-      icon: <CalendarDays size={32} />,
+      icon: (
+        <motion.div
+          animate={{ scale: [1, 1.15, 1, 1.15, 1, 1, 1] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <CalendarDays size={32} />
+        </motion.div>
+      ),
       title: "Synced Calendar",
       slug: "calendar",
       desc: "A built-in calendar that stays in sync with your leads, showings, and AI-booked appointments. Never double-book or miss a meeting again.",
@@ -491,9 +564,14 @@ export default function Home() {
               <p style={{ fontSize: "0.8rem", fontWeight: 700, color: "#7C3AED", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 12 }}>AI Tools</p>
               <h2 style={{ fontFamily: "var(--font-dm-sans)", marginBottom: 16, display: "flex", alignItems: "center", justifyContent: "center", gap: 14 }}>
                 <span>Your AI Team,{" "}<span className="gradient-text">Working 24/7</span></span>
-                <motion.span style={{ display: "inline-flex", color: "#7C3AED", rotate: scrollRotate }}>
-                  <Settings size={32} />
-                </motion.span>
+                <div style={{ position: "relative", width: 44, height: 44, flexShrink: 0 }}>
+                  <motion.span style={{ display: "inline-flex", color: "#7C3AED", rotate: scrollRotate, position: "absolute", top: 0, left: 0 }}>
+                    <Settings size={36} />
+                  </motion.span>
+                  <motion.span style={{ display: "inline-flex", color: "#A78BFA", rotate: scrollRotateReverse, position: "absolute", bottom: -6, right: -10 }}>
+                    <Settings size={20} />
+                  </motion.span>
+                </div>
               </h2>
               <p style={{ color: "#64748B", fontSize: "1.05rem", maxWidth: 560, margin: "0 auto" }}>
                 Powerful AI tools that handle prospecting, nurturing, outreach, and organization — while you focus on closing.
