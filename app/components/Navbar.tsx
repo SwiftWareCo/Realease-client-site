@@ -87,25 +87,14 @@ export default function Navbar() {
                         style={{
                             display: "flex",
                             alignItems: "center",
-                            gap: 8,
                             textDecoration: "none",
-                            fontSize: "1.35rem",
-                            fontWeight: 800,
-                            color: "#0F172A",
-                            letterSpacing: "-0.03em",
-                            fontFamily: "var(--font-dm-sans), sans-serif",
                         }}
                     >
-                        <span
-                            style={{
-                                background: "linear-gradient(135deg, #F59E0B, #D97706)",
-                                WebkitBackgroundClip: "text",
-                                WebkitTextFillColor: "transparent",
-                            }}
-                        >
-                            real
-                        </span>
-                        ease
+                        <img
+                            src="/realease-logo.png"
+                            alt="RealEase Logo"
+                            style={{ width: "140px", height: "auto" }}
+                        />
                     </a>
 
                     {/* Desktop Nav */}

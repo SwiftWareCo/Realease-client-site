@@ -56,20 +56,26 @@ export default function HeroSection({ openCalendly }: HeroSectionProps) {
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
                     {/* Left — Copy */}
                     <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-                        <div
-                            style={{
-                                display: "inline-flex",
-                                alignItems: "center",
-                                gap: 8,
-                                padding: "8px 20px",
-                                background: "rgba(245,158,11,0.06)",
-                                borderRadius: 50,
-                                marginBottom: 24,
-                                border: "1px solid rgba(245,158,11,0.12)",
-                            }}
-                        >
-                            <Sparkles size={14} style={{ color: "#F59E0B" }} />
-                            <span style={{ fontSize: "0.8rem", fontWeight: 600, color: "#F59E0B" }}>Your AI Command Center</span>
+                        <div style={{ display: "flex", alignItems: "flex-end", gap: 24, marginBottom: 40 }}>
+                            <img
+                                src="/realease-logo.png"
+                                alt="RealEase Logo"
+                                style={{ width: "240px", height: "auto" }}
+                            />
+                            <div
+                                style={{
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    gap: 8,
+                                    padding: "8px 20px",
+                                    background: "rgba(245,158,11,0.06)",
+                                    borderRadius: 50,
+                                    border: "1px solid rgba(245,158,11,0.12)",
+                                }}
+                            >
+                                <Sparkles size={14} style={{ color: "#F59E0B" }} />
+                                <span style={{ fontSize: "0.8rem", fontWeight: 600, color: "#F59E0B" }}>Your AI Command Center</span>
+                            </div>
                         </div>
 
                         <div style={{ height: "180px", position: "relative", marginBottom: 20 }}>

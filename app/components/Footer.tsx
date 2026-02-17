@@ -66,26 +66,15 @@ export default function Footer() {
                         <a
                             href="#"
                             style={{
-                                fontSize: "1.5rem",
-                                fontWeight: 800,
-                                color: "white",
-                                textDecoration: "none",
-                                fontFamily: "var(--font-dm-sans), sans-serif",
-                                letterSpacing: "-0.03em",
                                 display: "block",
                                 marginBottom: 16,
                             }}
                         >
-                            <span
-                                style={{
-                                    background: "linear-gradient(135deg, #F59E0B, #D97706)",
-                                    WebkitBackgroundClip: "text",
-                                    WebkitTextFillColor: "transparent",
-                                }}
-                            >
-                                real
-                            </span>
-                            ease
+                            <img
+                                src="/realease-logo.png"
+                                alt="RealEase Logo"
+                                style={{ width: "150px", height: "auto" }}
+                            />
                         </a>
                         <p
                             style={{
