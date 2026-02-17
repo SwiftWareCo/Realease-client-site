@@ -30,17 +30,7 @@ export default function Home() {
   const scrollRotateReverse = useTransform(scrollYProgress, [0, 1], [0, -1200]);
 
   /* Load Calendly widget script */
-  useEffect(() => {
-    if (document.querySelector('script[src*="calendly.com/assets/external/widget.js"]')) return;
-    const link = document.createElement("link");
-    link.href = "https://assets.calendly.com/assets/external/widget.css";
-    link.rel = "stylesheet";
-    document.head.appendChild(link);
-    const script = document.createElement("script");
-    script.src = "https://assets.calendly.com/assets/external/widget.js";
-    script.async = true;
-    document.body.appendChild(script);
-  }, []);
+
 
   const openCalendly = () => {
     if (window.Calendly) {

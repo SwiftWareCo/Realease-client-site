@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, DM_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -30,6 +31,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${dmSans.variable}`}>
         {children}
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+        <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
       </body>
     </html>
   );
