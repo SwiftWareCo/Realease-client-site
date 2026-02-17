@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { motion } from "framer-motion";
 import { useSearchParams } from "next/navigation";
 import {
@@ -24,7 +25,7 @@ declare global {
 }
 const CALENDLY_URL = "https://calendly.com/amarramadann/30min";
 
-export default function CalendarPage() {
+function CalendarContent() {
     const searchParams = useSearchParams();
     const fromSection = searchParams.get("from") === "section";
     const openCalendly = () => {
@@ -181,5 +182,13 @@ export default function CalendarPage() {
 
             <Footer />
         </>
+    );
+}
+
+export default function CalendarPage() {
+    return (
+        <Suspense fallback={null}>
+            <CalendarContent />
+        </Suspense>
     );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { motion } from "framer-motion";
@@ -26,7 +26,7 @@ declare global {
 }
 const CALENDLY_URL = "https://calendly.com/amarramadann/30min";
 
-export default function CRMPage() {
+function CRMContent() {
     const searchParams = useSearchParams();
     const fromSection = searchParams.get("from") === "section";
     const [canAnimate, setCanAnimate] = useState(false);
@@ -165,5 +165,13 @@ export default function CRMPage() {
 
             <Footer />
         </>
+    );
+}
+
+export default function CRMPage() {
+    return (
+        <Suspense fallback={null}>
+            <CRMContent />
+        </Suspense>
     );
 }
