@@ -48,6 +48,9 @@ export default function CRMPage() {
 
     return (
         <>
+            <Link href="/#tools" style={{ position: "fixed", top: 80, left: 24, zIndex: 1000, display: "inline-flex", alignItems: "center", gap: 6, fontSize: "0.85rem", color: "#F59E0B", textDecoration: "none", fontWeight: 600, background: "rgba(255,255,255,0.85)", backdropFilter: "blur(12px)", padding: "8px 16px", borderRadius: 50, border: "1px solid rgba(245,158,11,0.15)", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+                <ArrowLeft size={16} /> Back to Home
+            </Link>
             <Navbar />
 
             <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", paddingTop: 100, paddingBottom: 60, position: "relative", overflow: "hidden" }}>
@@ -57,13 +60,10 @@ export default function CRMPage() {
                 <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", width: "100%", position: "relative", zIndex: 1 }}>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
                         <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-                            <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: "0.85rem", color: "#F59E0B", textDecoration: "none", marginBottom: 24, fontWeight: 600 }}>
-                                <ArrowLeft size={16} /> Back to Home
-                            </Link>
 
-                            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "8px 20px", background: "rgba(245,158,11,0.06)", borderRadius: 50, marginBottom: 24, border: "1px solid rgba(245,158,11,0.12)" }}>
-                                <Database size={14} style={{ color: "#F59E0B" }} />
-                                <span style={{ fontSize: "0.8rem", fontWeight: 600, color: "#F59E0B" }}>AI-Powered CRM</span>
+                            <div style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "12px 28px", background: "rgba(245,158,11,0.06)", borderRadius: 50, marginBottom: 24, border: "1px solid rgba(245,158,11,0.12)" }}>
+                                <Database size={18} style={{ color: "#F59E0B" }} />
+                                <span style={{ fontSize: "0.95rem", fontWeight: 600, color: "#F59E0B" }}>AI-Powered CRM</span>
                             </div>
 
                             <h1 style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", fontWeight: 800, lineHeight: 1.1, fontFamily: "var(--font-dm-sans)", letterSpacing: "-0.04em", marginBottom: 20 }}>
