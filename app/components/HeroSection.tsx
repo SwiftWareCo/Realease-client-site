@@ -9,11 +9,11 @@ interface HeroSectionProps {
 }
 
 const phrases = [
-    "The Machine Behind *Your Momentum*.",
+    "Every Lead. Every Step. *Managed.*",
     "Your Entire Workflow. *All in One Platform.*",
     "The Heavy Lifting, *Handled.*",
-    "From Lead to Close, *Covered.*",
-    "Every Lead. Every Step. *Managed.*"
+    "The Machine Behind *Your Performance*.",
+    "From Lead to Close, *Covered.*"
 ];
 
 export default function HeroSection({ openCalendly }: HeroSectionProps) {
