@@ -88,7 +88,34 @@ export default function CalendarPage() {
                                 ))}
                             </div>
 
-                            <button onClick={openCalendly} className="btn-primary">See It in Action <ArrowRight size={18} /></button>
+                            <button
+                                onClick={openCalendly}
+                                style={{
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    gap: 8,
+                                    padding: "14px 32px",
+                                    background: "linear-gradient(135deg, #EF4444, #DC2626)",
+                                    color: "white",
+                                    border: "none",
+                                    borderRadius: 50,
+                                    fontSize: "1rem",
+                                    fontWeight: 600,
+                                    cursor: "pointer",
+                                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                                    boxShadow: "0 4px 20px rgba(239,68,68,0.3)",
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.transform = "translateY(-2px)";
+                                    e.currentTarget.style.boxShadow = "0 8px 30px rgba(239,68,68,0.4)";
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.transform = "translateY(0)";
+                                    e.currentTarget.style.boxShadow = "0 4px 20px rgba(239,68,68,0.3)";
+                                }}
+                            >
+                                See It in Action <ArrowRight size={18} />
+                            </button>
                         </motion.div>
 
                         <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.3 }}>
@@ -122,7 +149,7 @@ export default function CalendarPage() {
                 <div style={{ maxWidth: 1100, margin: "0 auto" }}>
                     <div style={{ textAlign: "center", marginBottom: 64 }}>
                         <p style={{ fontSize: "0.8rem", fontWeight: 700, color: "#EF4444", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 12 }}>Capabilities</p>
-                        <h2 style={{ fontFamily: "var(--font-dm-sans)" }}>Scheduling Made <span className="gradient-text">Effortless</span></h2>
+                        <h2 style={{ fontFamily: "var(--font-dm-sans)" }}>Scheduling Made <span style={{ background: "linear-gradient(135deg, #EF4444, #DC2626)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Effortless</span></h2>
                     </div>
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
                         {features.map((f, i) => (

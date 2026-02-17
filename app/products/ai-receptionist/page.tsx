@@ -104,7 +104,32 @@ export default function AIReceptionistPage() {
                                 ))}
                             </div>
 
-                            <button onClick={openCalendly} className="btn-primary">
+                            <button
+                                onClick={openCalendly}
+                                style={{
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    gap: 8,
+                                    padding: "14px 32px",
+                                    background: "linear-gradient(135deg, #10B981, #059669)",
+                                    color: "white",
+                                    border: "none",
+                                    borderRadius: 50,
+                                    fontSize: "1rem",
+                                    fontWeight: 600,
+                                    cursor: "pointer",
+                                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                                    boxShadow: "0 4px 20px rgba(16,185,129,0.3)",
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.transform = "translateY(-2px)";
+                                    e.currentTarget.style.boxShadow = "0 8px 30px rgba(16,185,129,0.4)";
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.transform = "translateY(0)";
+                                    e.currentTarget.style.boxShadow = "0 4px 20px rgba(16,185,129,0.3)";
+                                }}
+                            >
                                 See It in Action <ArrowRight size={18} />
                             </button>
                         </motion.div>
@@ -156,7 +181,7 @@ export default function AIReceptionistPage() {
                     <div style={{ textAlign: "center", marginBottom: 64 }}>
                         <p style={{ fontSize: "0.8rem", fontWeight: 700, color: "#10B981", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 12 }}>Capabilities</p>
                         <h2 style={{ fontFamily: "var(--font-dm-sans)", marginBottom: 16 }}>
-                            Everything Your AI Receptionist <span className="gradient-text">Can Do</span>
+                            Everything Your AI Receptionist <span style={{ background: "linear-gradient(135deg, #10B981, #059669)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Can Do</span>
                         </h2>
                     </div>
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
@@ -192,7 +217,7 @@ export default function AIReceptionistPage() {
             <section style={{ padding: "100px 24px" }}>
                 <div style={{ maxWidth: 800, margin: "0 auto" }}>
                     <div style={{ textAlign: "center", marginBottom: 64 }}>
-                        <h2 style={{ fontFamily: "var(--font-dm-sans)" }}>How It <span className="gradient-text">Works</span></h2>
+                        <h2 style={{ fontFamily: "var(--font-dm-sans)" }}>How It <span style={{ background: "linear-gradient(135deg, #10B981, #059669)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Works</span></h2>
                     </div>
                     {[
                         { step: "1", title: "Lead Calls In", desc: "When a new lead calls, the AI receptionist answers instantly with a natural, human-like voice." },
