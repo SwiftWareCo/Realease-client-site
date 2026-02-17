@@ -1,13 +1,31 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Users, Sparkles, ArrowRight } from "lucide-react";
 
 interface HeroSectionProps {
     openCalendly: () => void;
 }
 
+const phrases = [
+    "The Machine Behind *Your Momentum*.",
+    "Your Entire Workflow. *All in One Platform.*",
+    "The Heavy Lifting, *Handled.*",
+    "From Lead to Close, *Covered.*",
+    "Every Lead. Every Step. *Managed.*"
+];
+
 export default function HeroSection({ openCalendly }: HeroSectionProps) {
+    const [currentPhrase, setCurrentPhrase] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentPhrase((prev) => (prev + 1) % phrases.length);
+        }, 3500);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <section
             style={{
@@ -54,28 +72,45 @@ export default function HeroSection({ openCalendly }: HeroSectionProps) {
                             <span style={{ fontSize: "0.8rem", fontWeight: 600, color: "#F59E0B" }}>Your AI Command Center</span>
                         </div>
 
-                        <h1
-                            style={{
-                                fontSize: "clamp(2.2rem, 4.5vw, 3.6rem)",
-                                fontWeight: 800,
-                                lineHeight: 1.08,
-                                fontFamily: "var(--font-dm-sans)",
-                                letterSpacing: "-0.04em",
-                                marginBottom: 20,
-                            }}
-                        >
-                            Your Entire Workflow.
-                            <br />
-                            <span
-                                style={{
-                                    background: "linear-gradient(135deg, #F59E0B, #D97706, #EA580C)",
-                                    WebkitBackgroundClip: "text",
-                                    WebkitTextFillColor: "transparent",
-                                }}
-                            >
-                                All in One Platform.
-                            </span>
-                        </h1>
+                        <div style={{ height: "180px", position: "relative", marginBottom: 20 }}>
+                            <AnimatePresence mode="wait">
+                                <motion.h1
+                                    key={currentPhrase}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ duration: 0.5 }}
+                                    style={{
+                                        fontSize: "clamp(2.2rem, 4.5vw, 3.6rem)",
+                                        fontWeight: 800,
+                                        lineHeight: 1.08,
+                                        fontFamily: "var(--font-dm-sans)",
+                                        letterSpacing: "-0.04em",
+                                        position: "absolute",
+                                        top: 0,
+                                        left: 0,
+                                        width: "100%",
+                                    }}
+                                >
+                                    {phrases[currentPhrase].split("*").map((part, index) =>
+                                        index % 2 === 1 ? (
+                                            <span
+                                                key={index}
+                                                style={{
+                                                    background: "linear-gradient(135deg, #F59E0B, #D97706, #EA580C)",
+                                                    WebkitBackgroundClip: "text",
+                                                    WebkitTextFillColor: "transparent",
+                                                }}
+                                            >
+                                                {part}
+                                            </span>
+                                        ) : (
+                                            part
+                                        )
+                                    )}
+                                </motion.h1>
+                            </AnimatePresence>
+                        </div>
 
                         <p style={{ fontSize: "1.05rem", color: "#64748B", lineHeight: 1.7, marginBottom: 32, maxWidth: 500 }}>
                             RealEase does the work that keeps deals alive — so you can focus on the moments that close them.

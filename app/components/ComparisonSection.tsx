@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, X as XIcon, TrendingUp, Clock, Zap, Star } from "lucide-react";
+import { Check, X as XIcon, TrendingUp, CalendarDays, Zap, Star } from "lucide-react";
 import Reveal from "./Reveal";
 import Counter from "./Counter";
 
@@ -40,7 +40,7 @@ export default function ComparisonSection() {
                     >
                         {[
                             { icon: <TrendingUp size={16} />, value: 47, suffix: "%", label: "Higher Conversion", color: "#F59E0B" },
-                            { icon: <Clock size={16} />, value: 78, suffix: "%", label: "Expect <5 Min Reply", color: "#7C3AED" },
+                            { icon: <CalendarDays size={16} />, value: 4, suffix: "x", label: "More Booked Appointments", color: "#7C3AED" },
                             { icon: <Zap size={16} />, value: 10, suffix: "x", label: "Faster Qualification", color: "#10B981" },
                             { icon: <Star size={16} />, value: 89, suffix: "%", label: "Agents Using AI by 2027", color: "#F59E0B" },
                         ].map((stat) => (
