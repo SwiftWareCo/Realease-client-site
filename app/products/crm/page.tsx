@@ -68,7 +68,7 @@ export default function CRMPage() {
 
                             <h1 style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", fontWeight: 800, lineHeight: 1.1, fontFamily: "var(--font-dm-sans)", letterSpacing: "-0.04em", marginBottom: 20 }}>
                                 Your Leads,{" "}
-                                <span style={{ background: "linear-gradient(135deg, #F59E0B, #D97706, #4F46E5)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                                <span style={{ background: "linear-gradient(135deg, #F59E0B, #D97706, #EA580C)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                                     Organized by AI.
                                 </span>
                             </h1>

@@ -51,7 +51,7 @@ export default function AIReceptionistPage() {
 
     return (
         <>
-            <Link href="/#tools" style={{ position: "fixed", top: 80, left: 24, zIndex: 1000, display: "inline-flex", alignItems: "center", gap: 6, fontSize: "0.85rem", color: "#4F46E5", textDecoration: "none", fontWeight: 600, background: "rgba(255,255,255,0.85)", backdropFilter: "blur(12px)", padding: "8px 16px", borderRadius: 50, border: "1px solid rgba(79,70,229,0.15)", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+            <Link href="/#tools" style={{ position: "fixed", top: 80, left: 24, zIndex: 1000, display: "inline-flex", alignItems: "center", gap: 6, fontSize: "0.85rem", color: "#10B981", textDecoration: "none", fontWeight: 600, background: "rgba(255,255,255,0.85)", backdropFilter: "blur(12px)", padding: "8px 16px", borderRadius: 50, border: "1px solid rgba(16,185,129,0.15)", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
                 <ArrowLeft size={16} /> Back to Home
             </Link>
             <Navbar />
@@ -68,21 +68,21 @@ export default function AIReceptionistPage() {
                     overflow: "hidden",
                 }}
             >
-                <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(79,70,229,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(79,70,229,0.04) 1px, transparent 1px)", backgroundSize: "60px 60px", pointerEvents: "none" }} />
-                <div style={{ position: "absolute", top: -100, right: -100, width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(79,70,229,0.10), transparent 70%)", filter: "blur(60px)", pointerEvents: "none" }} />
+                <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(16,185,129,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.04) 1px, transparent 1px)", backgroundSize: "60px 60px", pointerEvents: "none" }} />
+                <div style={{ position: "absolute", top: -100, right: -100, width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(16,185,129,0.10), transparent 70%)", filter: "blur(60px)", pointerEvents: "none" }} />
 
                 <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", width: "100%", position: "relative", zIndex: 1 }}>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
                         <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
 
-                            <div style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "12px 28px", background: "rgba(79,70,229,0.06)", borderRadius: 50, marginBottom: 24, border: "1px solid rgba(79,70,229,0.12)" }}>
-                                <Phone size={18} style={{ color: "#4F46E5" }} />
-                                <span style={{ fontSize: "0.95rem", fontWeight: 600, color: "#4F46E5" }}>AI Receptionist</span>
+                            <div style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "12px 28px", background: "rgba(16,185,129,0.06)", borderRadius: 50, marginBottom: 24, border: "1px solid rgba(16,185,129,0.12)" }}>
+                                <Phone size={18} style={{ color: "#10B981" }} />
+                                <span style={{ fontSize: "0.95rem", fontWeight: 600, color: "#10B981" }}>AI Receptionist</span>
                             </div>
 
                             <h1 style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", fontWeight: 800, lineHeight: 1.1, fontFamily: "var(--font-dm-sans)", letterSpacing: "-0.04em", marginBottom: 20 }}>
                                 Never Miss a Lead Call.{" "}
-                                <span style={{ background: "linear-gradient(135deg, #4F46E5, #7C3AED, #10B981)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                                <span style={{ background: "linear-gradient(135deg, #10B981, #059669, #06B6D4)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                                     Ever Again.
                                 </span>
                             </h1>
@@ -98,7 +98,7 @@ export default function AIReceptionistPage() {
                                     { value: "24/7", label: "Availability" },
                                 ].map((s) => (
                                     <div key={s.label}>
-                                        <p style={{ fontSize: "1.5rem", fontWeight: 800, color: "#4F46E5", fontFamily: "var(--font-dm-sans)" }}>{s.value}</p>
+                                        <p style={{ fontSize: "1.5rem", fontWeight: 800, color: "#10B981", fontFamily: "var(--font-dm-sans)" }}>{s.value}</p>
                                         <p style={{ fontSize: "0.75rem", color: "#94A3B8" }}>{s.label}</p>
                                     </div>
                                 ))}
@@ -111,7 +111,7 @@ export default function AIReceptionistPage() {
 
                         {/* Live conversation preview */}
                         <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.3 }}>
-                            <div style={{ background: "linear-gradient(135deg, #F8F9FC, #EEF2FF)", borderRadius: 20, padding: 24, border: "1px solid rgba(79,70,229,0.1)", boxShadow: "0 24px 48px rgba(79,70,229,0.08)" }}>
+                            <div style={{ background: "linear-gradient(135deg, #F8F9FC, #ECFDF5)", borderRadius: 20, padding: 24, border: "1px solid rgba(16,185,129,0.1)", boxShadow: "0 24px 48px rgba(16,185,129,0.08)" }}>
                                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
                                     <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#10B981", animation: "pulse-soft 2s ease-in-out infinite" }} />
                                     <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "#10B981" }}>Live Call Simulation</span>
@@ -129,15 +129,15 @@ export default function AIReceptionistPage() {
                                                 alignItems: line.speaker === "AI" ? "flex-start" : "flex-end",
                                             }}
                                         >
-                                            <span style={{ fontSize: "0.68rem", fontWeight: 700, color: line.speaker === "AI" ? "#4F46E5" : "#94A3B8", marginBottom: 4 }}>
+                                            <span style={{ fontSize: "0.68rem", fontWeight: 700, color: line.speaker === "AI" ? "#10B981" : "#94A3B8", marginBottom: 4 }}>
                                                 {line.speaker === "AI" ? "AI Receptionist" : "Lead"}
                                             </span>
                                             <div style={{
-                                                background: line.speaker === "AI" ? "rgba(79,70,229,0.06)" : "#F8F9FC",
+                                                background: line.speaker === "AI" ? "rgba(16,185,129,0.06)" : "#F8F9FC",
                                                 padding: "10px 14px",
                                                 borderRadius: 12,
                                                 maxWidth: "85%",
-                                                border: line.speaker === "AI" ? "1px solid rgba(79,70,229,0.12)" : "1px solid #E2E8F0",
+                                                border: line.speaker === "AI" ? "1px solid rgba(16,185,129,0.12)" : "1px solid #E2E8F0",
                                             }}>
                                                 <span style={{ fontSize: "0.82rem", color: "#334155", lineHeight: 1.6 }}>{line.text}</span>
                                             </div>
@@ -154,7 +154,7 @@ export default function AIReceptionistPage() {
             <section style={{ padding: "100px 24px", background: "#FAFBFE" }}>
                 <div style={{ maxWidth: 1100, margin: "0 auto" }}>
                     <div style={{ textAlign: "center", marginBottom: 64 }}>
-                        <p style={{ fontSize: "0.8rem", fontWeight: 700, color: "#7C3AED", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 12 }}>Capabilities</p>
+                        <p style={{ fontSize: "0.8rem", fontWeight: 700, color: "#10B981", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 12 }}>Capabilities</p>
                         <h2 style={{ fontFamily: "var(--font-dm-sans)", marginBottom: 16 }}>
                             Everything Your AI Receptionist <span className="gradient-text">Can Do</span>
                         </h2>
@@ -174,10 +174,10 @@ export default function AIReceptionistPage() {
                                     border: "1px solid #E2E8F0",
                                     transition: "box-shadow 0.3s, transform 0.3s",
                                 }}
-                                onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 12px 40px rgba(79,70,229,0.08)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
+                                onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 12px 40px rgba(16,185,129,0.08)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
                                 onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "translateY(0)"; }}
                             >
-                                <div style={{ width: 48, height: 48, borderRadius: 12, background: "rgba(79,70,229,0.06)", display: "flex", alignItems: "center", justifyContent: "center", color: "#4F46E5", marginBottom: 16 }}>
+                                <div style={{ width: 48, height: 48, borderRadius: 12, background: "rgba(16,185,129,0.06)", display: "flex", alignItems: "center", justifyContent: "center", color: "#10B981", marginBottom: 16 }}>
                                     {f.icon}
                                 </div>
                                 <h3 style={{ fontSize: "1.1rem", fontWeight: 700, fontFamily: "var(--font-dm-sans)", marginBottom: 8 }}>{f.title}</h3>
@@ -208,7 +208,7 @@ export default function AIReceptionistPage() {
                             transition={{ delay: i * 0.15 }}
                             style={{ display: "flex", gap: 24, marginBottom: 40, alignItems: "flex-start" }}
                         >
-                            <div style={{ width: 48, height: 48, borderRadius: "50%", background: "linear-gradient(135deg, #4F46E5, #7C3AED)", color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.1rem", fontWeight: 800, fontFamily: "var(--font-dm-sans)", flexShrink: 0 }}>
+                            <div style={{ width: 48, height: 48, borderRadius: "50%", background: "linear-gradient(135deg, #10B981, #059669)", color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.1rem", fontWeight: 800, fontFamily: "var(--font-dm-sans)", flexShrink: 0 }}>
                                 {item.step}
                             </div>
                             <div>
@@ -227,7 +227,7 @@ export default function AIReceptionistPage() {
                         Ready to Put Your Phone on Autopilot?
                     </h2>
                     <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: 36, lineHeight: 1.7 }}>See how the AI Receptionist handles real calls in a live demo.</p>
-                    <button onClick={openCalendly} style={{ padding: "16px 40px", background: "linear-gradient(135deg, #4F46E5, #7C3AED)", color: "white", border: "none", borderRadius: 50, fontSize: "1rem", fontWeight: 700, cursor: "pointer", boxShadow: "0 4px 24px rgba(79,70,229,0.3)" }}>
+                    <button onClick={openCalendly} style={{ padding: "16px 40px", background: "linear-gradient(135deg, #10B981, #059669)", color: "white", border: "none", borderRadius: 50, fontSize: "1rem", fontWeight: 700, cursor: "pointer", boxShadow: "0 4px 24px rgba(16,185,129,0.3)" }}>
                         See It in Action <ArrowRight size={18} style={{ display: "inline", verticalAlign: "middle", marginLeft: 8 }} />
                     </button>
                 </div>

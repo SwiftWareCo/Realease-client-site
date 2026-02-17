@@ -173,9 +173,9 @@ export default function DemoForm({ isOpen, onClose }: DemoFormProps) {
                                                     setFormData({ ...formData, name: e.target.value })
                                                 }
                                                 onFocus={(e) => {
-                                                    e.currentTarget.style.borderColor = "#4F46E5";
+                                                    e.currentTarget.style.borderColor = "#F59E0B";
                                                     e.currentTarget.style.boxShadow =
-                                                        "0 0 0 3px rgba(79,70,229,0.1)";
+                                                        "0 0 0 3px rgba(245,158,11,0.1)";
                                                 }}
                                                 onBlur={(e) => {
                                                     e.currentTarget.style.borderColor = "#E2E8F0";
@@ -195,9 +195,9 @@ export default function DemoForm({ isOpen, onClose }: DemoFormProps) {
                                                     setFormData({ ...formData, email: e.target.value })
                                                 }
                                                 onFocus={(e) => {
-                                                    e.currentTarget.style.borderColor = "#4F46E5";
+                                                    e.currentTarget.style.borderColor = "#F59E0B";
                                                     e.currentTarget.style.boxShadow =
-                                                        "0 0 0 3px rgba(79,70,229,0.1)";
+                                                        "0 0 0 3px rgba(245,158,11,0.1)";
                                                 }}
                                                 onBlur={(e) => {
                                                     e.currentTarget.style.borderColor = "#E2E8F0";
@@ -226,9 +226,9 @@ export default function DemoForm({ isOpen, onClose }: DemoFormProps) {
                                                     setFormData({ ...formData, phone: e.target.value })
                                                 }
                                                 onFocus={(e) => {
-                                                    e.currentTarget.style.borderColor = "#4F46E5";
+                                                    e.currentTarget.style.borderColor = "#F59E0B";
                                                     e.currentTarget.style.boxShadow =
-                                                        "0 0 0 3px rgba(79,70,229,0.1)";
+                                                        "0 0 0 3px rgba(245,158,11,0.1)";
                                                 }}
                                                 onBlur={(e) => {
                                                     e.currentTarget.style.borderColor = "#E2E8F0";
@@ -247,9 +247,9 @@ export default function DemoForm({ isOpen, onClose }: DemoFormProps) {
                                                     setFormData({ ...formData, company: e.target.value })
                                                 }
                                                 onFocus={(e) => {
-                                                    e.currentTarget.style.borderColor = "#4F46E5";
+                                                    e.currentTarget.style.borderColor = "#F59E0B";
                                                     e.currentTarget.style.boxShadow =
-                                                        "0 0 0 3px rgba(79,70,229,0.1)";
+                                                        "0 0 0 3px rgba(245,158,11,0.1)";
                                                 }}
                                                 onBlur={(e) => {
                                                     e.currentTarget.style.borderColor = "#E2E8F0";
@@ -275,9 +275,9 @@ export default function DemoForm({ isOpen, onClose }: DemoFormProps) {
                                                 setFormData({ ...formData, message: e.target.value })
                                             }
                                             onFocus={(e) => {
-                                                e.currentTarget.style.borderColor = "#4F46E5";
+                                                e.currentTarget.style.borderColor = "#F59E0B";
                                                 e.currentTarget.style.boxShadow =
-                                                    "0 0 0 3px rgba(79,70,229,0.1)";
+                                                    "0 0 0 3px rgba(245,158,11,0.1)";
                                             }}
                                             onBlur={(e) => {
                                                 e.currentTarget.style.borderColor = "#E2E8F0";
@@ -295,14 +295,14 @@ export default function DemoForm({ isOpen, onClose }: DemoFormProps) {
                                             gap: 8,
                                             padding: "14px 32px",
                                             background:
-                                                "linear-gradient(135deg, #4F46E5, #7C3AED)",
+                                                "linear-gradient(135deg, #F59E0B, #D97706)",
                                             color: "white",
                                             border: "none",
                                             borderRadius: 50,
                                             fontSize: "1rem",
                                             fontWeight: 600,
                                             cursor: "pointer",
-                                            boxShadow: "0 4px 20px rgba(79,70,229,0.3)",
+                                            boxShadow: "0 4px 20px rgba(245,158,11,0.3)",
                                             transition: "all 0.3s ease",
                                             marginTop: 4,
                                             fontFamily: "var(--font-inter), sans-serif",
@@ -310,12 +310,12 @@ export default function DemoForm({ isOpen, onClose }: DemoFormProps) {
                                         onMouseEnter={(e) => {
                                             e.currentTarget.style.transform = "translateY(-2px)";
                                             e.currentTarget.style.boxShadow =
-                                                "0 8px 30px rgba(79,70,229,0.4)";
+                                                "0 8px 30px rgba(245,158,11,0.4)";
                                         }}
                                         onMouseLeave={(e) => {
                                             e.currentTarget.style.transform = "translateY(0)";
                                             e.currentTarget.style.boxShadow =
-                                                "0 4px 20px rgba(79,70,229,0.3)";
+                                                "0 4px 20px rgba(245,158,11,0.3)";
                                         }}
                                     >
                                         <Send size={18} />

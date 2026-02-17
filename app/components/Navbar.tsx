@@ -98,7 +98,7 @@ export default function Navbar() {
                     >
                         <span
                             style={{
-                                background: "linear-gradient(135deg, #4F46E5, #7C3AED)",
+                                background: "linear-gradient(135deg, #F59E0B, #D97706)",
                                 WebkitBackgroundClip: "text",
                                 WebkitTextFillColor: "transparent",
                             }}
@@ -293,26 +293,26 @@ export default function Navbar() {
                             onClick={openCalendly}
                             style={{
                                 padding: "10px 24px",
-                                background: "linear-gradient(135deg, #4F46E5, #7C3AED)",
+                                background: "linear-gradient(135deg, #F59E0B, #D97706)",
                                 color: "white",
                                 border: "none",
                                 borderRadius: 50,
                                 fontSize: "0.875rem",
                                 fontWeight: 600,
                                 cursor: "pointer",
-                                boxShadow: "0 4px 20px rgba(79,70,229,0.3)",
+                                boxShadow: "0 4px 20px rgba(245,158,11,0.3)",
                                 transition: "all 0.3s ease",
                                 fontFamily: "var(--font-inter), sans-serif",
                             }}
                             onMouseEnter={(e) => {
                                 e.currentTarget.style.transform = "translateY(-2px)";
                                 e.currentTarget.style.boxShadow =
-                                    "0 8px 30px rgba(79,70,229,0.4)";
+                                    "0 8px 30px rgba(245,158,11,0.4)";
                             }}
                             onMouseLeave={(e) => {
                                 e.currentTarget.style.transform = "translateY(0)";
                                 e.currentTarget.style.boxShadow =
-                                    "0 4px 20px rgba(79,70,229,0.3)";
+                                    "0 4px 20px rgba(245,158,11,0.3)";
                             }}
                         >
                             Book a Free Demo
@@ -437,7 +437,7 @@ export default function Navbar() {
                             style={{
                                 marginTop: 24,
                                 padding: "14px 32px",
-                                background: "linear-gradient(135deg, #4F46E5, #7C3AED)",
+                                background: "linear-gradient(135deg, #F59E0B, #D97706)",
                                 color: "white",
                                 border: "none",
                                 borderRadius: 50,

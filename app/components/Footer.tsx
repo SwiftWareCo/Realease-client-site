@@ -78,7 +78,7 @@ export default function Footer() {
                         >
                             <span
                                 style={{
-                                    background: "linear-gradient(135deg, #818CF8, #A78BFA)",
+                                    background: "linear-gradient(135deg, #F59E0B, #D97706)",
                                     WebkitBackgroundClip: "text",
                                     WebkitTextFillColor: "transparent",
                                 }}
