@@ -76,7 +76,7 @@ export default function CalendarPage() {
                             </h1>
 
                             <p style={{ fontSize: "1.05rem", color: "#64748B", lineHeight: 1.7, marginBottom: 32, maxWidth: 500 }}>
-                                Your calendar stays perfectly synced with your CRM, showings, and AI-booked appointments. Never double-book or miss a meeting again.
+                                <strong>Your calendar stays perfectly synced</strong> with your CRM, showings, and AI-booked appointments. <strong>Never double-book</strong> or miss a meeting again.
                             </p>
 
                             <div style={{ display: "flex", gap: 24, marginBottom: 32 }}>

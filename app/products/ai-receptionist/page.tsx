@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
     Phone,
@@ -27,18 +27,25 @@ declare global {
 const CALENDLY_URL = "https://calendly.com/amarramadann/30min";
 
 export default function AIReceptionistPage() {
+    const [canAnimate, setCanAnimate] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => setCanAnimate(true), 2000);
+        return () => clearTimeout(timer);
+    }, []);
+
     const openCalendly = () => {
         if (window.Calendly) window.Calendly.initPopupWidget({ url: CALENDLY_URL });
         else window.open(CALENDLY_URL, "_blank");
     };
 
     const features = [
-        { icon: <Clock size={24} />, title: "Instant Response", desc: "Calls are answered in under 1 second — no lead left waiting." },
-        { icon: <Brain size={24} />, title: "Smart Qualification", desc: "AI scores leads based on budget, timeline, and intent in real-time." },
-        { icon: <CalendarDays size={24} />, title: "Auto Booking", desc: "Books appointments directly on your calendar with confirmed availability." },
-        { icon: <FileText size={24} />, title: "Full Transcripts", desc: "Every call is transcribed and summarized with actionable notes." },
-        { icon: <Mic size={24} />, title: "Natural Conversations", desc: "Human-like voice AI that adapts tone and language to each lead." },
-        { icon: <BarChart3 size={24} />, title: "Call Analytics", desc: "Track call volume, conversion rates, and lead quality over time." },
+        { icon: <Clock size={24} />, title: "Instant Response", desc: <>Calls are answered in <strong>under 1 second</strong> — no lead left waiting.</> },
+        { icon: <Brain size={24} />, title: "Smart Qualification", desc: <>AI scores leads based on budget, timeline, and intent <strong>in real-time</strong>.</> },
+        { icon: <CalendarDays size={24} />, title: "Auto Booking", desc: <><strong>Books appointments directly</strong> on your calendar with confirmed availability.</> },
+        { icon: <FileText size={24} />, title: "Full Transcripts", desc: <>Every call is <strong>transcribed and summarized</strong> with actionable notes.</> },
+        { icon: <Mic size={24} />, title: "Natural Conversations", desc: <><strong>Human-like voice AI</strong> that adapts tone and language to each lead.</> },
+        { icon: <BarChart3 size={24} />, title: "Call Analytics", desc: <><strong>Track call volume</strong>, conversion rates, and lead quality over time.</> },
     ];
 
     const conversation = [
@@ -88,7 +95,7 @@ export default function AIReceptionistPage() {
                             </h1>
 
                             <p style={{ fontSize: "1.05rem", color: "#64748B", lineHeight: 1.7, marginBottom: 32, maxWidth: 500 }}>
-                                Your AI receptionist answers every call instantly, qualifies leads, books appointments, and delivers detailed transcripts — 24 hours a day, 7 days a week.
+                                Your AI receptionist <strong>answers every call instantly</strong>, <strong>qualifies leads</strong>, <strong>books appointments</strong>, and delivers detailed transcripts — <strong>24 hours a day, 7 days a week</strong>.
                             </p>
 
                             <div style={{ display: "flex", gap: 24, marginBottom: 32 }}>
@@ -178,19 +185,25 @@ export default function AIReceptionistPage() {
             {/* FEATURES GRID */}
             <section style={{ padding: "100px 24px", background: "#FAFBFE" }}>
                 <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-                    <div style={{ textAlign: "center", marginBottom: 64 }}>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.6 }}
+                        style={{ textAlign: "center", marginBottom: 64 }}
+                    >
                         <p style={{ fontSize: "0.8rem", fontWeight: 700, color: "#10B981", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 12 }}>Capabilities</p>
                         <h2 style={{ fontFamily: "var(--font-dm-sans)", marginBottom: 16 }}>
                             Everything Your AI Receptionist <span style={{ background: "linear-gradient(135deg, #10B981, #059669)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Can Do</span>
                         </h2>
-                    </div>
+                    </motion.div>
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
                         {features.map((f, i) => (
                             <motion.div
                                 key={f.title}
                                 initial={{ opacity: 0, y: 24 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
+                                whileInView={canAnimate ? { opacity: 1, y: 0 } : undefined}
+                                viewport={{ once: true, margin: "0px 0px -100px 0px" }}
                                 transition={{ delay: i * 0.1 }}
                                 style={{
                                     background: "white",
@@ -216,9 +229,15 @@ export default function AIReceptionistPage() {
             {/* HOW IT WORKS */}
             <section style={{ padding: "100px 24px" }}>
                 <div style={{ maxWidth: 800, margin: "0 auto" }}>
-                    <div style={{ textAlign: "center", marginBottom: 64 }}>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.6 }}
+                        style={{ textAlign: "center", marginBottom: 64 }}
+                    >
                         <h2 style={{ fontFamily: "var(--font-dm-sans)" }}>How It <span style={{ background: "linear-gradient(135deg, #10B981, #059669)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Works</span></h2>
-                    </div>
+                    </motion.div>
                     {[
                         { step: "1", title: "Lead Calls In", desc: "When a new lead calls, the AI receptionist answers instantly with a natural, human-like voice." },
                         { step: "2", title: "Qualification Happens", desc: "The AI asks smart questions about budget, timeline, location, and buying intent." },
@@ -228,8 +247,8 @@ export default function AIReceptionistPage() {
                         <motion.div
                             key={item.step}
                             initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
+                            whileInView={canAnimate ? { opacity: 1, x: 0 } : undefined}
+                            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
                             transition={{ delay: i * 0.15 }}
                             style={{ display: "flex", gap: 24, marginBottom: 40, alignItems: "flex-start" }}
                         >
@@ -247,7 +266,13 @@ export default function AIReceptionistPage() {
 
             {/* CTA */}
             <section style={{ padding: "100px 24px", background: "#0F172A" }}>
-                <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={canAnimate ? { opacity: 1, y: 0 } : undefined}
+                    viewport={{ once: true, margin: "0px 0px -150px 0px" }}
+                    transition={{ duration: 0.8 }}
+                    style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}
+                >
                     <h2 style={{ fontFamily: "var(--font-dm-sans)", color: "white", fontSize: "clamp(1.6rem, 3vw, 2.2rem)", marginBottom: 16 }}>
                         Ready to Put Your Phone on Autopilot?
                     </h2>
@@ -255,7 +280,7 @@ export default function AIReceptionistPage() {
                     <button onClick={openCalendly} style={{ padding: "16px 40px", background: "linear-gradient(135deg, #10B981, #059669)", color: "white", border: "none", borderRadius: 50, fontSize: "1rem", fontWeight: 700, cursor: "pointer", boxShadow: "0 4px 24px rgba(16,185,129,0.3)" }}>
                         See It in Action <ArrowRight size={18} style={{ display: "inline", verticalAlign: "middle", marginLeft: 8 }} />
                     </button>
-                </div>
+                </motion.div>
             </section>
 
             <Footer />

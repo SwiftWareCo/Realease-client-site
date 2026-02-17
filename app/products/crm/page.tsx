@@ -1,5 +1,7 @@
 "use client";
 
+import { useState, useEffect } from "react";
+
 import { motion } from "framer-motion";
 import {
     Database,
@@ -24,18 +26,25 @@ declare global {
 const CALENDLY_URL = "https://calendly.com/amarramadann/30min";
 
 export default function CRMPage() {
+    const [canAnimate, setCanAnimate] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => setCanAnimate(true), 2000);
+        return () => clearTimeout(timer);
+    }, []);
+
     const openCalendly = () => {
         if (window.Calendly) window.Calendly.initPopupWidget({ url: CALENDLY_URL });
         else window.open(CALENDLY_URL, "_blank");
     };
 
     const features = [
-        { icon: <Tag size={24} />, title: "Auto-Tagging", desc: "Leads are automatically tagged by source, interest level, price range, and more — zero manual work." },
-        { icon: <Search size={24} />, title: "Smart Search", desc: "Find any lead instantly with AI-powered search across names, notes, tags, and conversation history." },
-        { icon: <Layers size={24} />, title: "Pipeline Views", desc: "Kanban boards, list views, and custom filters so you see your pipeline the way you want." },
-        { icon: <BarChart3 size={24} />, title: "AI Insights", desc: "Surface high-intent leads, predict close probability, and spot pipeline bottlenecks automatically." },
-        { icon: <Users size={24} />, title: "Team Collaboration", desc: "Assign leads, share notes, and track team performance — all in one place." },
-        { icon: <Zap size={24} />, title: "Zero Manual Entry", desc: "Every call, text, and email is automatically logged. Your CRM stays up-to-date without lifting a finger." },
+        { icon: <Tag size={24} />, title: "Auto-Tagging", desc: <>Leads are automatically tagged by source, interest level, price range, and more — <strong>zero manual work</strong>.</> },
+        { icon: <Search size={24} />, title: "Smart Search", desc: <><strong>Find any lead instantly</strong> with AI-powered search across names, notes, tags, and conversation history.</> },
+        { icon: <Layers size={24} />, title: "Pipeline Views", desc: <><strong>Pipeline Views</strong>, list views, and custom filters so you see your pipeline the way you want.</> },
+        { icon: <BarChart3 size={24} />, title: "AI Insights", desc: <><strong>Surface high-intent leads</strong>, predict close probability, and spot pipeline bottlenecks automatically.</> },
+        { icon: <Users size={24} />, title: "Team Collaboration", desc: <><strong>Assign leads, share notes</strong>, and track team performance — all in one place.</> },
+        { icon: <Zap size={24} />, title: "Zero Manual Entry", desc: <>Every call, text, and email is <strong>automatically logged</strong>. Your CRM stays up-to-date without lifting a finger.</> },
     ];
 
     const crmPreview = [
@@ -74,7 +83,7 @@ export default function CRMPage() {
                             </h1>
 
                             <p style={{ fontSize: "1.05rem", color: "#64748B", lineHeight: 1.7, marginBottom: 32, maxWidth: 500 }}>
-                                A CRM that auto-organizes your leads, tracks every interaction, and surfaces actionable insights — no manual data entry needed.
+                                A CRM that <strong>auto-organizes your leads</strong>, <strong>tracks every interaction</strong>, and <strong>surfaces actionable insights</strong> — no manual data entry needed.
                             </p>
 
                             <div style={{ display: "flex", gap: 24, marginBottom: 32 }}>
@@ -110,13 +119,19 @@ export default function CRMPage() {
 
             <section style={{ padding: "100px 24px", background: "#FAFBFE" }}>
                 <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-                    <div style={{ textAlign: "center", marginBottom: 64 }}>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={canAnimate ? { opacity: 1, y: 0 } : undefined}
+                        viewport={{ once: true, margin: "0px 0px -150px 0px" }}
+                        transition={{ duration: 0.6 }}
+                        style={{ textAlign: "center", marginBottom: 64 }}
+                    >
                         <p style={{ fontSize: "0.8rem", fontWeight: 700, color: "#F59E0B", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 12 }}>Capabilities</p>
                         <h2 style={{ fontFamily: "var(--font-dm-sans)" }}>A CRM That <span className="gradient-text">Works for You</span></h2>
-                    </div>
+                    </motion.div>
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
                         {features.map((f, i) => (
-                            <motion.div key={f.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} style={{ background: "white", borderRadius: 16, padding: 28, border: "1px solid #E2E8F0", transition: "box-shadow 0.3s, transform 0.3s" }}
+                            <motion.div key={f.title} initial={{ opacity: 0, y: 24 }} whileInView={canAnimate ? { opacity: 1, y: 0 } : undefined} viewport={{ once: true, margin: "0px 0px -100px 0px" }} transition={{ delay: i * 0.1 }} style={{ background: "white", borderRadius: 16, padding: 28, border: "1px solid #E2E8F0", transition: "box-shadow 0.3s, transform 0.3s" }}
                                 onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 12px 40px rgba(245,158,11,0.08)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
                                 onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "translateY(0)"; }}
                             >
@@ -130,13 +145,19 @@ export default function CRMPage() {
             </section>
 
             <section style={{ padding: "100px 24px", background: "#0F172A" }}>
-                <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={canAnimate ? { opacity: 1, y: 0 } : undefined}
+                    viewport={{ once: true, margin: "0px 0px -150px 0px" }}
+                    transition={{ duration: 0.8 }}
+                    style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}
+                >
                     <h2 style={{ fontFamily: "var(--font-dm-sans)", color: "white", fontSize: "clamp(1.6rem, 3vw, 2.2rem)", marginBottom: 16 }}>Ready to Ditch the Spreadsheets?</h2>
                     <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: 36, lineHeight: 1.7 }}>See how the AI-Powered CRM organizes your leads in a live demo.</p>
                     <button onClick={openCalendly} style={{ padding: "16px 40px", background: "linear-gradient(135deg, #F59E0B, #D97706)", color: "white", border: "none", borderRadius: 50, fontSize: "1rem", fontWeight: 700, cursor: "pointer", boxShadow: "0 4px 24px rgba(245,158,11,0.3)" }}>
                         See It in Action <ArrowRight size={18} style={{ display: "inline", verticalAlign: "middle", marginLeft: 8 }} />
                     </button>
-                </div>
+                </motion.div>
             </section>
 
             <Footer />

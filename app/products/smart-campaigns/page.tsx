@@ -74,7 +74,7 @@ export default function SmartCampaignsPage() {
                             </h1>
 
                             <p style={{ fontSize: "1.05rem", color: "#64748B", lineHeight: 1.7, marginBottom: 32, maxWidth: 500 }}>
-                                AI-crafted campaign sequences that adapt to each lead&apos;s behavior. Cold outreach, warm follow-ups, market updates — all running on autopilot.
+                                AI-crafted campaign sequences that <strong>adapt to each lead&apos;s behavior</strong>. Cold outreach, warm follow-ups, market updates — <strong>all running on autopilot</strong>.
                             </p>
 
                             <div style={{ display: "flex", gap: 24, marginBottom: 32 }}>

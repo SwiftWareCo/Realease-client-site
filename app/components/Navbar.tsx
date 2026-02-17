@@ -35,7 +35,7 @@ export default function Navbar() {
     const products = [
         { name: "CRM & Lead Management", href: "/products/crm" },
         { name: "AI Receptionist", href: "/products/ai-receptionist" },
-        { name: "SMS Bot", href: "/products/sms-bot" },
+        { name: "SMS Agent", href: "/products/sms-bot" },
         { name: "Smart Campaigns", href: "/products/smart-campaigns" },
         { name: "Calendar & Tasks", href: "/products/calendar" },
     ];

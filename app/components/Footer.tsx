@@ -9,7 +9,7 @@ export default function Footer() {
             links: [
                 { name: "CRM & Leads", href: "#" },
                 { name: "AI Receptionist", href: "#" },
-                { name: "SMS Bot", href: "#" },
+                { name: "SMS Agent", href: "#" },
                 { name: "Campaigns", href: "#" },
                 { name: "Calendar", href: "#" },
                 { name: "Analytics", href: "#" },

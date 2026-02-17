@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-const items = ["AI Receptionist", "Smart CRM", "Campaign Engine", "Synced Calendar", "SMS Bot", "Lead Scoring", "Analytics", "Task Manager"];
+const items = ["AI Receptionist", "Smart CRM", "Campaign Engine", "Synced Calendar", "SMS Agent", "Lead Scoring", "Analytics", "Task Manager"];
 
 export default function LogoCarousel() {
     return (

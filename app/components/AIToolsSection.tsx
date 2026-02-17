@@ -26,7 +26,7 @@ const aiTools = [
         ),
         title: "AI-Powered CRM",
         slug: "crm",
-        desc: "A smart CRM that auto-organizes your leads, tracks every interaction, and surfaces actionable insights — so you can spend less time on busywork.",
+        desc: <>A smart CRM that <strong>auto-organizes your leads</strong>, <strong>tracks every interaction</strong>, and <strong>surfaces actionable insights</strong> — so you can spend less time on busywork.</>,
         stats: [
             { label: "Auto-tagged", value: "100%" },
             { label: "Data entry saved", value: "10h/wk" },
@@ -52,7 +52,7 @@ const aiTools = [
         ),
         title: "SMS Agent",
         slug: "sms-bot",
-        desc: "Intelligent automated text conversations that nurture leads and answer questions in seconds. Feels personal, runs at machine speed.",
+        desc: <>Intelligent <strong>automated text conversations</strong> that nurture leads and <strong>answer questions in seconds</strong>. Feels personal, runs at machine speed.</>,
         stats: [
             { label: "Avg reply time", value: "8 sec" },
             { label: "Engagement rate", value: "72%" },
@@ -84,7 +84,7 @@ const aiTools = [
         ),
         title: "AI Receptionist",
         slug: "ai-receptionist",
-        desc: "Handles inbound and outbound calls around the clock. Qualifies prospects, books appointments, records full transcripts, and auto-updates lead profiles with smart notes.",
+        desc: <>Handles inbound and outbound calls around the clock. <strong>Qualifies prospects</strong>, <strong>books appointments</strong>, records full transcripts, and auto-updates lead profiles with smart notes.</>,
         stats: [
             { label: "Response time", value: "<1s" },
             { label: "Booking rate", value: "34%" },
@@ -133,7 +133,7 @@ const aiTools = [
         ),
         title: "Smart Campaigns",
         slug: "smart-campaigns",
-        desc: "AI-crafted outreach sequences that adapt to each lead's behavior. Cold outreach, warm follow-ups, market updates — all automated.",
+        desc: <>AI-crafted outreach sequences that <strong>adapt to each lead&apos;s behavior</strong>. Cold outreach, warm follow-ups, market updates — <strong>all automated</strong>.</>,
         stats: [
             { label: "Open rate", value: "68%" },
             { label: "Reply rate", value: "22%" },
@@ -157,7 +157,7 @@ const aiTools = [
         ),
         title: "Synced Calendar",
         slug: "calendar",
-        desc: "A built-in calendar that stays in sync with your leads, showings, and AI-booked appointments. Never double-book or miss a meeting again.",
+        desc: <>A built-in calendar that <strong>stays in sync</strong> with your leads, showings, and AI-booked appointments. <strong>Never double-book</strong> or miss a meeting again.</>,
         stats: [
             { label: "Auto-scheduled", value: "95%" },
             { label: "Conflicts", value: "Zero" },
