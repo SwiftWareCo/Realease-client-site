@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 import { motion } from "framer-motion";
 import {
@@ -26,6 +27,8 @@ declare global {
 const CALENDLY_URL = "https://calendly.com/amarramadann/30min";
 
 export default function CRMPage() {
+    const searchParams = useSearchParams();
+    const fromSection = searchParams.get("from") === "section";
     const [canAnimate, setCanAnimate] = useState(false);
 
     useEffect(() => {
@@ -57,7 +60,7 @@ export default function CRMPage() {
 
     return (
         <>
-            <Link href="/#tools" style={{ position: "fixed", top: 80, left: 24, zIndex: 1000, display: "inline-flex", alignItems: "center", gap: 6, fontSize: "0.85rem", color: "#F59E0B", textDecoration: "none", fontWeight: 600, background: "rgba(255,255,255,0.85)", backdropFilter: "blur(12px)", padding: "8px 16px", borderRadius: 50, border: "1px solid rgba(245,158,11,0.15)", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+            <Link href={fromSection ? "/#crm" : "/"} style={{ position: "fixed", top: 80, left: 24, zIndex: 1000, display: "inline-flex", alignItems: "center", gap: 6, fontSize: "0.85rem", color: "#F59E0B", textDecoration: "none", fontWeight: 600, background: "rgba(255,255,255,0.85)", backdropFilter: "blur(12px)", padding: "8px 16px", borderRadius: 50, border: "1px solid rgba(245,158,11,0.15)", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
                 <ArrowLeft size={16} /> Back to Home
             </Link>
             <Navbar />

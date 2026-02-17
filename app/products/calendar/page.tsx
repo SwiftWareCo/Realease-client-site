@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useSearchParams } from "next/navigation";
 import {
     CalendarDays,
     ArrowRight,
@@ -24,6 +25,8 @@ declare global {
 const CALENDLY_URL = "https://calendly.com/amarramadann/30min";
 
 export default function CalendarPage() {
+    const searchParams = useSearchParams();
+    const fromSection = searchParams.get("from") === "section";
     const openCalendly = () => {
         if (window.Calendly) window.Calendly.initPopupWidget({ url: CALENDLY_URL });
         else window.open(CALENDLY_URL, "_blank");
@@ -50,7 +53,7 @@ export default function CalendarPage() {
 
     return (
         <>
-            <Link href="/#tools" style={{ position: "fixed", top: 80, left: 24, zIndex: 1000, display: "inline-flex", alignItems: "center", gap: 6, fontSize: "0.85rem", color: "#EF4444", textDecoration: "none", fontWeight: 600, background: "rgba(255,255,255,0.85)", backdropFilter: "blur(12px)", padding: "8px 16px", borderRadius: 50, border: "1px solid rgba(239,68,68,0.15)", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+            <Link href={fromSection ? "/#calendar" : "/"} style={{ position: "fixed", top: 80, left: 24, zIndex: 1000, display: "inline-flex", alignItems: "center", gap: 6, fontSize: "0.85rem", color: "#EF4444", textDecoration: "none", fontWeight: 600, background: "rgba(255,255,255,0.85)", backdropFilter: "blur(12px)", padding: "8px 16px", borderRadius: 50, border: "1px solid rgba(239,68,68,0.15)", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
                 <ArrowLeft size={16} /> Back to Home
             </Link>
             <Navbar />

@@ -205,12 +205,14 @@ export default function AIToolsSection({ scrollRotate, scrollRotateReverse }: AI
                     {aiTools.map((tool, i) => (
                         <Reveal key={tool.title} delay={0.1}>
                             <div
+                                id={tool.slug}
                                 style={{
                                     display: "grid",
                                     gridTemplateColumns: "1fr 1fr",
                                     gap: 48,
                                     alignItems: "center",
                                     direction: i % 2 === 1 ? "rtl" : "ltr",
+                                    scrollMarginTop: "240px",
                                 }}
                             >
                                 <div style={{ direction: "ltr" }}>
@@ -240,7 +242,7 @@ export default function AIToolsSection({ scrollRotate, scrollRotateReverse }: AI
                                         ))}
                                     </div>
                                     <Link
-                                        href={`/products/${tool.slug}`}
+                                        href={`/products/${tool.slug}?from=section`}
                                         style={{
                                             display: "inline-flex",
                                             alignItems: "center",
