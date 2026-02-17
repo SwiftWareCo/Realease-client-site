@@ -14,14 +14,45 @@ const CALENDLY_URL = "https://calendly.com/amarramadann/30min";
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
+    const [showLogo, setShowLogo] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
     const [productsOpen, setProductsOpen] = useState(false);
     const [resourcesOpen, setResourcesOpen] = useState(false);
 
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 20);
+        const onScroll = () => {
+            setScrolled(window.scrollY > 20);
+
+            // Fallback if hero logo doesn't exist (e.g. other pages)
+            if (!document.getElementById("hero-logo-container")) {
+                setShowLogo(window.scrollY > 20);
+            }
+        };
+
         window.addEventListener("scroll", onScroll, { passive: true });
-        return () => window.removeEventListener("scroll", onScroll);
+
+        // Intersection Observer for Hero Logo
+        const heroLogo = document.getElementById("hero-logo-container");
+        let observer: IntersectionObserver;
+
+        if (heroLogo) {
+            observer = new IntersectionObserver(
+                ([entry]) => {
+                    // Show navbar logo when less than 50% of the hero logo is visible
+                    setShowLogo(!entry.isIntersecting);
+                },
+                { threshold: 0.5 }
+            );
+            observer.observe(heroLogo);
+        } else {
+            // Initial check for non-hero pages
+            setShowLogo(window.scrollY > 20);
+        }
+
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+            if (observer) observer.disconnect();
+        };
     }, []);
 
     const openCalendly = () => {
@@ -82,20 +113,30 @@ export default function Navbar() {
                     }}
                 >
                     {/* Logo */}
-                    <a
-                        href="#"
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            textDecoration: "none",
-                        }}
-                    >
-                        <img
-                            src="/realease-logo.png"
-                            alt="RealEase Logo"
-                            style={{ width: "140px", height: "auto" }}
-                        />
-                    </a>
+                    <div style={{ width: 140, height: 50, display: "flex", alignItems: "center" }}>
+                        <AnimatePresence>
+                            {showLogo && (
+                                <motion.a
+                                    href="#"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: 10 }}
+                                    transition={{ duration: 0.3 }}
+                                    style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        textDecoration: "none",
+                                    }}
+                                >
+                                    <img
+                                        src="/realease-logo.png"
+                                        alt="RealEase Logo"
+                                        style={{ width: "140px", height: "auto" }}
+                                    />
+                                </motion.a>
+                            )}
+                        </AnimatePresence>
+                    </div>
 
                     {/* Desktop Nav */}
                     <div

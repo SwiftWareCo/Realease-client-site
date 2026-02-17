@@ -56,7 +56,7 @@ export default function HeroSection({ openCalendly }: HeroSectionProps) {
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
                     {/* Left — Copy */}
                     <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-                        <div style={{ display: "flex", alignItems: "flex-end", gap: 24, marginBottom: 40 }}>
+                        <div id="hero-logo-container" style={{ display: "flex", alignItems: "flex-end", gap: 24, marginBottom: 40 }}>
                             <img
                                 src="/realease-logo.png"
                                 alt="RealEase Logo"
