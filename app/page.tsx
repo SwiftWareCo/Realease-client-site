@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useInView, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import {
   Users,
   Phone,
@@ -16,6 +16,7 @@ import {
   Zap,
   Star,
   Search,
+  Settings,
   UserPlus,
   Sprout,
   HeartHandshake,
@@ -72,6 +73,10 @@ const CALENDLY_URL = "https://calendly.com/amarramadann/30min";
 export default function Home() {
   const [demoOpen, setDemoOpen] = useState(false);
 
+  /* Scroll-driven cog rotation */
+  const { scrollYProgress } = useScroll();
+  const scrollRotate = useTransform(scrollYProgress, [0, 1], [0, 720]);
+
   /* Load Calendly widget script */
   useEffect(() => {
     if (document.querySelector('script[src*="calendly.com/assets/external/widget.js"]')) return;
@@ -96,34 +101,35 @@ export default function Home() {
   /* ── Data ── */
 
   const flowSteps = [
-    { icon: <UserPlus size={24} />, title: "Lead Intake", desc: "Captured from Google, Zillow, open houses & forms.", color: "#4F46E5" },
-    { icon: <Search size={24} />, title: "AI Qualification", desc: "Scored & qualified by the AI receptionist.", color: "#7C3AED" },
+    { icon: <UserPlus size={24} />, title: "Lead Intake", desc: "Leads are captured and entered into the system.", color: "#4F46E5" },
+    { icon: <Search size={24} />, title: "AI Qualification", desc: "Leads are scored & qualified by trained AI agents.", color: "#7C3AED" },
     { icon: <Sprout size={24} />, title: "Automated Nurture", desc: "SMS & email campaigns keep leads warm.", color: "#10B981" },
+    { icon: <TrendingUp size={24} />, title: "Lead Advancement", desc: "Realtors are provided with actionable insights to advance every lead to a deal.", color: "#06B6D4" },
     { icon: <HeartHandshake size={24} />, title: "Deal Stage", desc: "Showings, contracts & deadlines coordinated.", color: "#F59E0B" },
     { icon: <Trophy size={24} />, title: "Closed Deal", desc: "More deals closed with less effort.", color: "#EF4444" },
   ];
 
   const aiTools = [
     {
-      icon: <Phone size={32} />,
-      title: "AI Receptionist",
-      slug: "ai-receptionist",
-      desc: "Calls cold leads around the clock. Qualifies prospects, books appointments on your calendar, records full transcripts, and auto-updates lead profiles with smart notes.",
+      icon: <Database size={32} />,
+      title: "AI-Powered CRM",
+      slug: "crm",
+      desc: "A smart CRM that auto-organizes your leads, tracks every interaction, and surfaces actionable insights — so you can spend less time on busywork.",
       stats: [
-        { label: "Response time", value: "<1s" },
-        { label: "Booking rate", value: "34%" },
-        { label: "Available", value: "24/7" },
+        { label: "Auto-tagged", value: "100%" },
+        { label: "Data entry saved", value: "10h/wk" },
+        { label: "Pipeline views", value: "∞" },
       ],
       color: "#4F46E5",
       liveText: [
-        { speaker: "AI", text: "Hi! I'm calling on behalf of John about the property on Oak Avenue…" },
-        { speaker: "Lead", text: "Yes, I'd love to see it. What times work?" },
-        { speaker: "AI", text: "I have Thursday 2 PM or Friday 11 AM. Which works better?" },
+        { speaker: "System", text: "New lead 'Sarah M.' auto-tagged as Hot — budget $550k" },
+        { speaker: "System", text: "Lead moved to 'Showing' stage after SMS confirmation" },
+        { speaker: "System", text: "AI note: High intent — pre-approved, relocating from Austin" },
       ],
     },
     {
       icon: <MessageSquare size={32} />,
-      title: "SMS Bot",
+      title: "SMS Agent",
       slug: "sms-bot",
       desc: "Intelligent automated text conversations that nurture leads and answer questions in seconds. Feels personal, runs at machine speed.",
       stats: [
@@ -139,6 +145,23 @@ export default function Home() {
       ],
     },
     {
+      icon: <Phone size={32} />,
+      title: "AI Receptionist",
+      slug: "ai-receptionist",
+      desc: "Handles inbound and outbound calls around the clock. Qualifies prospects, books appointments, records full transcripts, and auto-updates lead profiles with smart notes.",
+      stats: [
+        { label: "Response time", value: "<1s" },
+        { label: "Booking rate", value: "34%" },
+        { label: "Available", value: "24/7" },
+      ],
+      color: "#10B981",
+      liveText: [
+        { speaker: "AI", text: "Hi! I'm calling on behalf of John about the property on Oak Avenue…" },
+        { speaker: "Lead", text: "Yes, I'd love to see it. What times work?" },
+        { speaker: "AI", text: "I have Thursday 2 PM or Friday 11 AM. Which works better?" },
+      ],
+    },
+    {
       icon: <Sparkles size={32} />,
       title: "Smart Campaigns",
       slug: "smart-campaigns",
@@ -148,7 +171,7 @@ export default function Home() {
         { label: "Reply rate", value: "22%" },
         { label: "Templates", value: "50+" },
       ],
-      color: "#10B981",
+      color: "#F59E0B",
       liveText: [
         { speaker: "System", text: "Campaign 'Cold → Warm' sent to 45 leads" },
         { speaker: "System", text: "12 opens, 4 replies, 2 appointments booked" },
@@ -156,31 +179,14 @@ export default function Home() {
       ],
     },
     {
-      icon: <Database size={32} />,
-      title: "AI-Powered CRM",
-      slug: "crm",
-      desc: "A smart CRM that auto-organizes your leads, tracks every interaction, and surfaces actionable insights — no manual data entry needed.",
-      stats: [
-        { label: "Auto-tagged", value: "100%" },
-        { label: "Data entry saved", value: "10h/wk" },
-        { label: "Pipeline views", value: "∞" },
-      ],
-      color: "#F59E0B",
-      liveText: [
-        { speaker: "System", text: "New lead 'Sarah M.' auto-tagged as Hot — budget $550k" },
-        { speaker: "System", text: "Lead moved to 'Showing' stage after SMS confirmation" },
-        { speaker: "System", text: "AI note: High intent — pre-approved, relocating from Austin" },
-      ],
-    },
-    {
       icon: <CalendarDays size={32} />,
       title: "Synced Calendar",
       slug: "calendar",
-      desc: "Your calendar stays perfectly synced with your CRM, showings, and AI-booked appointments. Never double-book or miss a meeting again.",
+      desc: "A built-in calendar that stays in sync with your leads, showings, and AI-booked appointments. Never double-book or miss a meeting again.",
       stats: [
         { label: "Auto-scheduled", value: "95%" },
         { label: "Conflicts", value: "Zero" },
-        { label: "Integrations", value: "Google, Outlook" },
+        { label: "Linked to CRM", value: "Always" },
       ],
       color: "#06B6D4",
       liveText: [
@@ -278,7 +284,7 @@ export default function Home() {
               </h1>
 
               <p style={{ fontSize: "1.05rem", color: "#64748B", lineHeight: 1.7, marginBottom: 32, maxWidth: 500 }}>
-                RealEase automates your lead management, follow-ups, and campaigns — so you can focus on building relationships and closing deals.
+                RealEase does the work that keeps deals alive — so you can focus on the moments that close them.
               </p>
 
               <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
@@ -415,8 +421,8 @@ export default function Home() {
                 <div
                   key={step.title}
                   style={{
-                    flex: "0 0 20%",
-                    minWidth: 220,
+                    flex: "0 0 16.66%",
+                    minWidth: 180,
                     scrollSnapAlign: "start",
                     display: "flex",
                     flexDirection: "column",
@@ -465,7 +471,7 @@ export default function Home() {
                   <span style={{ fontSize: "0.72rem", fontWeight: 700, color: step.color, background: `${step.color}10`, padding: "3px 12px", borderRadius: 20, marginBottom: 10 }}>
                     Step {i + 1}
                   </span>
-                  <h4 style={{ fontSize: "1.05rem", fontWeight: 700, fontFamily: "var(--font-dm-sans)", marginBottom: 8, color: "#0F172A" }}>{step.title}</h4>
+                  <h4 style={{ fontSize: "1.05rem", fontWeight: 700, fontFamily: "var(--font-dm-sans)", marginBottom: 8, color: "#0F172A", minHeight: "2.4em", display: "flex", alignItems: "center", justifyContent: "center" }}>{step.title}</h4>
                   <p style={{ fontSize: "0.85rem", color: "#64748B", lineHeight: 1.6 }}>{step.desc}</p>
                 </div>
               ))}
@@ -478,14 +484,16 @@ export default function Home() {
                 4. AI TOOLS — Your AI Team Working 24/7 — from /1 style
                    + CRM, Calendar, Learn More buttons, "more coming" teaser
             ═══════════════════════════════════════════════════ */}
-      <section id="tools" style={{ padding: "100px 24px" }}>
+      <section id="tools" style={{ padding: "100px 24px 40px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <Reveal>
             <div style={{ textAlign: "center", marginBottom: 64 }}>
               <p style={{ fontSize: "0.8rem", fontWeight: 700, color: "#7C3AED", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 12 }}>AI Tools</p>
-              <h2 style={{ fontFamily: "var(--font-dm-sans)", marginBottom: 16 }}>
-                Your AI Team,{" "}
-                <span className="gradient-text">Working 24/7</span>
+              <h2 style={{ fontFamily: "var(--font-dm-sans)", marginBottom: 16, display: "flex", alignItems: "center", justifyContent: "center", gap: 14 }}>
+                <span>Your AI Team,{" "}<span className="gradient-text">Working 24/7</span></span>
+                <motion.span style={{ display: "inline-flex", color: "#7C3AED", rotate: scrollRotate }}>
+                  <Settings size={32} />
+                </motion.span>
               </h2>
               <p style={{ color: "#64748B", fontSize: "1.05rem", maxWidth: 560, margin: "0 auto" }}>
                 Powerful AI tools that handle prospecting, nurturing, outreach, and organization — while you focus on closing.
@@ -632,14 +640,14 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════
                 5. TRADITIONAL AGENT vs REALEASE — from /3 (with metrics)
             ═══════════════════════════════════════════════════ */}
-      <section style={{ padding: "100px 24px" }}>
+      <section style={{ padding: "40px 24px 100px" }}>
         <div style={{ maxWidth: 950, margin: "0 auto" }}>
           <Reveal>
             <div style={{ textAlign: "center", marginBottom: 56 }}>
               <p style={{ fontSize: "0.8rem", fontWeight: 700, color: "#7C3AED", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 12 }}>Side by Side</p>
               <h2 style={{ fontFamily: "var(--font-dm-sans)" }}>
                 Traditional Agent vs.{" "}
-                <span className="gradient-text">RealEase-Powered Agent</span>
+                <span className="gradient-text">RealEase</span>
               </h2>
             </div>
           </Reveal>
@@ -726,7 +734,7 @@ export default function Home() {
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
           <Reveal>
             <p style={{ fontSize: "0.85rem", fontWeight: 600, color: "rgba(255,255,255,0.5)", marginBottom: 20 }}>Join 500+ Realtors Already Using RealEase</p>
-            <h2 style={{ fontFamily: "var(--font-dm-sans)", color: "white", fontSize: "clamp(1.8rem, 3vw, 2.5rem)", marginBottom: 16 }}>
+            <h2 style={{ fontFamily: "var(--font-dm-sans)", color: "white", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", marginBottom: 16, whiteSpace: "nowrap" }}>
               Ready to Close More Deals with Less Effort?
             </h2>
             <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "1rem", maxWidth: 500, margin: "0 auto 36px", lineHeight: 1.7 }}>
