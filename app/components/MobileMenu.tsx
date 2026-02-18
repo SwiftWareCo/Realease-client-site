@@ -1,16 +1,16 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import CalendlyButton from "./common/CalendlyButton";
 
 interface MobileMenuProps {
     isOpen: boolean;
     onClose: () => void;
     products: { name: string; href: string }[];
     resources: { name: string; href: string }[];
-    openCalendly: () => void;
 }
 
-const MobileMenu = ({ isOpen, onClose, products, resources, openCalendly }: MobileMenuProps) => {
+const MobileMenu = ({ isOpen, onClose, products, resources }: MobileMenuProps) => {
     return (
         <AnimatePresence>
             {isOpen && (
@@ -104,25 +104,23 @@ const MobileMenu = ({ isOpen, onClose, products, resources, openCalendly }: Mobi
                     >
                         Pricing
                     </a>
-                    <button
-                        onClick={() => {
-                            onClose();
-                            openCalendly();
-                        }}
-                        style={{
-                            marginTop: 24,
-                            padding: "14px 32px",
-                            background: "linear-gradient(135deg, #F59E0B, #D97706)",
-                            color: "white",
-                            border: "none",
-                            borderRadius: 50,
-                            fontSize: "1rem",
-                            fontWeight: 600,
-                            cursor: "pointer",
-                        }}
-                    >
-                        See It in Action
-                    </button>
+                    <div style={{ marginTop: 24 }}>
+                        <CalendlyButton
+                            text="See It in Action"
+                            onClick={onClose}
+                            style={{
+                                width: "100%",
+                                padding: "14px 32px",
+                                background: "linear-gradient(135deg, #F59E0B, #D97706)",
+                                color: "white",
+                                border: "none",
+                                borderRadius: 50,
+                                fontSize: "1rem",
+                                fontWeight: 600,
+                                cursor: "pointer",
+                            }}
+                        />
+                    </div>
                 </motion.div>
             )}
         </AnimatePresence>

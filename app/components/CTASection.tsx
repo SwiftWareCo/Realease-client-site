@@ -2,12 +2,12 @@
 
 import { ArrowRight, Check } from "lucide-react";
 import Reveal from "./Reveal";
+import CalendlyButton from "./common/CalendlyButton";
 
 interface CTASectionProps {
-    openCalendly: () => void;
 }
 
-export default function CTASection({ openCalendly }: CTASectionProps) {
+export default function CTASection({ }: CTASectionProps) {
     return (
         <section style={{ padding: "100px 24px", background: "#0F172A" }}>
             <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
@@ -19,8 +19,7 @@ export default function CTASection({ openCalendly }: CTASectionProps) {
                     <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "1rem", maxWidth: 500, margin: "0 auto 36px", lineHeight: 1.7 }}>
                         See how AI transforms your lead management, follow-ups, and deal flow — in just 30 minutes.
                     </p>
-                    <button
-                        onClick={openCalendly}
+                    <CalendlyButton
                         style={{
                             padding: "16px 40px",
                             background: "linear-gradient(135deg, #F59E0B, #D97706)",
@@ -33,11 +32,9 @@ export default function CTASection({ openCalendly }: CTASectionProps) {
                             boxShadow: "0 4px 24px rgba(245,158,11,0.3)",
                             transition: "transform 0.3s, box-shadow 0.3s",
                         }}
-                        onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 40px rgba(245,158,11,0.4)"; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 4px 24px rgba(245,158,11,0.3)"; }}
                     >
                         See It in Action <ArrowRight size={18} style={{ display: "inline", verticalAlign: "middle", marginLeft: 8 }} />
-                    </button>
+                    </CalendlyButton>
                     <div style={{ display: "flex", gap: 20, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
                         {["Free 14-day trial", "No credit card", "Cancel anytime"].map((item) => (
                             <span key={item} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: "0.8rem", color: "rgba(255,255,255,0.5)" }}>

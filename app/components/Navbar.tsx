@@ -11,7 +11,8 @@ declare global {
     }
 }
 
-const CALENDLY_URL = "https://calendly.com/amarramadann/30min";
+
+import CalendlyButton from "./common/CalendlyButton";
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
@@ -55,14 +56,6 @@ export default function Navbar() {
             if (observer) observer.disconnect();
         };
     }, []);
-
-    const openCalendly = () => {
-        if (window.Calendly) {
-            window.Calendly.initPopupWidget({ url: CALENDLY_URL });
-        } else {
-            window.open(CALENDLY_URL, "_blank");
-        }
-    };
 
     const products = [
         { name: "CRM & Lead Management", href: "/products/crm" },
@@ -320,8 +313,7 @@ export default function Navbar() {
                             Contact
                         </a>
 
-                        <button
-                            onClick={openCalendly}
+                        <CalendlyButton
                             style={{
                                 padding: "10px 24px",
                                 background: "linear-gradient(135deg, #F59E0B, #D97706)",
@@ -335,19 +327,7 @@ export default function Navbar() {
                                 transition: "all 0.3s ease",
                                 fontFamily: "var(--font-inter), sans-serif",
                             }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.transform = "translateY(-2px)";
-                                e.currentTarget.style.boxShadow =
-                                    "0 8px 30px rgba(245,158,11,0.4)";
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.transform = "translateY(0)";
-                                e.currentTarget.style.boxShadow =
-                                    "0 4px 20px rgba(245,158,11,0.3)";
-                            }}
-                        >
-                            Book a Free Demo
-                        </button>
+                        />
                     </div>
 
                     {/* Mobile Toggle */}
@@ -373,7 +353,6 @@ export default function Navbar() {
                 onClose={() => setMobileOpen(false)}
                 products={products}
                 resources={resources}
-                openCalendly={openCalendly}
             />
 
             <style jsx global>{`

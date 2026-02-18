@@ -8,16 +8,32 @@ interface CalendlyButtonProps {
     variant?: "primary" | "outline";
     color?: string; // Optional theme color
     children?: React.ReactNode;
+    style?: React.CSSProperties;
+    onClick?: () => void;
 }
 
 const CALENDLY_URL = "https://calendly.com/amarramadann/30min";
 
-const CalendlyButton = ({ className, text = "Book a Free Demo", variant = "primary", color, children }: CalendlyButtonProps) => {
+const CalendlyButton = ({ className, text = "Book a Free Demo", variant = "primary", color, children, style, onClick }: CalendlyButtonProps) => {
     const openCalendly = () => {
+        if (onClick) onClick();
         if (typeof window !== "undefined" && window.Calendly) {
             window.Calendly.initPopupWidget({ url: CALENDLY_URL });
         } else {
             window.open(CALENDLY_URL, "_blank");
+        }
+    };
+
+    const prefetchCalendly = () => {
+        if (typeof document !== "undefined") {
+            const id = "calendly-prefetch";
+            if (!document.getElementById(id)) {
+                const link = document.createElement("link");
+                link.id = id;
+                link.rel = "prefetch";
+                link.href = CALENDLY_URL;
+                document.head.appendChild(link);
+            }
         }
     };
 
@@ -41,8 +57,9 @@ const CalendlyButton = ({ className, text = "Book a Free Demo", variant = "prima
     return (
         <motion.button
             onClick={openCalendly}
+            onMouseEnter={prefetchCalendly}
             className={className}
-            style={primaryStyles}
+            style={{ ...primaryStyles, ...style }}
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
         >

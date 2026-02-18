@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Users, Sparkles, ArrowRight } from "lucide-react";
+import CalendlyButton from "./common/CalendlyButton";
 
 interface HeroSectionProps {
-    openCalendly: () => void;
 }
 
 const phrases = [
@@ -16,7 +16,7 @@ const phrases = [
     "From Lead to Close, *Covered.*"
 ];
 
-export default function HeroSection({ openCalendly }: HeroSectionProps) {
+export default function HeroSection({ }: HeroSectionProps) {
     const [currentPhrase, setCurrentPhrase] = useState(0);
 
     useEffect(() => {
@@ -123,9 +123,9 @@ export default function HeroSection({ openCalendly }: HeroSectionProps) {
                         </p>
 
                         <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-                            <button onClick={openCalendly} className="btn-primary">
+                            <CalendlyButton className="btn-primary">
                                 See It in Action <ArrowRight size={18} />
-                            </button>
+                            </CalendlyButton>
                             <a href="/about" className="btn-secondary">
                                 About Us
                             </a>
