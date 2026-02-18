@@ -94,7 +94,7 @@ export default function HeroSection({ openCalendly }: HeroSectionProps) {
                                         letterSpacing: "-0.04em",
                                         position: "absolute",
                                         top: 0,
-                                        left: 0,
+                                        left: -4,
                                         width: "100%",
                                     }}
                                 >
@@ -119,15 +119,15 @@ export default function HeroSection({ openCalendly }: HeroSectionProps) {
                         </div>
 
                         <p style={{ fontSize: "1.05rem", color: "#64748B", lineHeight: 1.7, marginBottom: 32, maxWidth: 500 }}>
-                            RealEase does the work that keeps deals alive — so you can focus on the moments that close them.
+                            RealEase does the work that <strong>keeps deals alive</strong> — so you can focus on the moments that close them.
                         </p>
 
                         <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
                             <button onClick={openCalendly} className="btn-primary">
                                 See It in Action <ArrowRight size={18} />
                             </button>
-                            <a href="#features" className="btn-secondary">
-                                Learn More
+                            <a href="/about" className="btn-secondary">
+                                About Us
                             </a>
                         </div>
                     </motion.div>
