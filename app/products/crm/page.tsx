@@ -51,7 +51,7 @@ function CRMContent() {
 
     return (
         <>
-            <Navbar />
+            <Navbar showBack={true} />
 
             <ProductHero
                 title="Your Leads,"
@@ -93,13 +93,28 @@ function CRMContent() {
                         <p style={{ fontSize: "0.8rem", fontWeight: 700, color: "#F59E0B", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 12 }}>Capabilities</p>
                         <h2 style={{ fontFamily: "var(--font-dm-sans)" }}>A CRM That <span className="gradient-text">Works for You</span></h2>
                     </motion.div>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+                    <div className="features-grid">
                         {features.map((f, i) => (
-                            <motion.div key={f.title} initial={{ opacity: 0, y: 24 }} whileInView={canAnimate ? { opacity: 1, y: 0 } : undefined} viewport={{ once: true, margin: "0px 0px -100px 0px" }} transition={{ delay: i * 0.1 }} style={{ background: "white", borderRadius: 16, padding: 28, border: "1px solid #E2E8F0", transition: "box-shadow 0.3s, transform 0.3s" }}
+                            <motion.div
+                                key={f.title}
+                                className="feature-card"
+                                initial={{ opacity: 0, y: 24 }}
+                                whileInView={canAnimate ? { opacity: 1, y: 0 } : undefined}
+                                viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+                                transition={{ delay: i * 0.1 }}
+                                style={{
+                                    background: "white",
+                                    borderRadius: 16,
+                                    padding: 28,
+                                    border: "1px solid #E2E8F0",
+                                    transition: "box-shadow 0.3s, transform 0.3s"
+                                }}
                                 onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 12px 40px rgba(245,158,11,0.08)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
                                 onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "translateY(0)"; }}
                             >
-                                <div style={{ width: 48, height: 48, borderRadius: 12, background: "rgba(245,158,11,0.06)", display: "flex", alignItems: "center", justifyContent: "center", color: "#F59E0B", marginBottom: 16 }}>{f.icon}</div>
+                                <div className="feature-icon" style={{ width: 48, height: 48, borderRadius: 12, background: "rgba(245,158,11,0.06)", display: "flex", alignItems: "center", justifyContent: "center", color: "#F59E0B", marginBottom: 16 }}>
+                                    {f.icon}
+                                </div>
                                 <h3 style={{ fontSize: "1.1rem", fontWeight: 700, fontFamily: "var(--font-dm-sans)", marginBottom: 8 }}>{f.title}</h3>
                                 <p style={{ fontSize: "0.88rem", color: "#64748B", lineHeight: 1.7 }}>{f.desc}</p>
                             </motion.div>
@@ -123,6 +138,37 @@ function CRMContent() {
             </section>
 
             <Footer />
+
+            <style jsx>{`
+                .features-grid {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 24px;
+                }
+
+                @media (max-width: 1024px) {
+                    .features-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .features-grid {
+                        grid-template-columns: 1fr;
+                        gap: 20px;
+                    }
+
+                    .feature-card {
+                        padding: 24px !important;
+                        text-align: center;
+                    }
+
+                    .feature-icon {
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                }
+            `}</style>
         </>
     );
 }

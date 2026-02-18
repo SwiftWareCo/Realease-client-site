@@ -9,37 +9,52 @@ const GapSlide = () => (
         {/* The Floating Icons - positioned across the full slide */}
         <div className="absolute inset-0 pointer-events-none">
             {[
-                { Icon: Mail, x: "-24vw", y: "-20vh", delay: 0 },
-                { Icon: Calendar, x: "22vw", y: "-16vh", delay: 0.5 },
-                { Icon: MessageSquare, x: "0vw", y: "-26vh", delay: 0.3 },
-                { Icon: Database, x: "-22vw", y: "16vh", delay: 1 },
-                { Icon: Phone, x: "24vw", y: "14vh", delay: 1.5 },
-            ].map(({ Icon, x, y, delay }, i) => (
+                { Icon: Mail, x: "-24vw", y: "-20vh", ym: "-35vh", delay: 0 },
+                { Icon: Calendar, x: "22vw", y: "-16vh", ym: "-30vh", delay: 0.5 },
+                { Icon: MessageSquare, x: "0vw", y: "-26vh", ym: "-40vh", delay: 0.3 },
+                { Icon: Database, x: "-22vw", y: "16vh", ym: "35vh", delay: 1 },
+                { Icon: Phone, x: "24vw", y: "14vh", ym: "30vh", delay: 1.5 },
+            ].map(({ Icon, x, y, ym, delay }, i) => (
                 <motion.div
                     key={i}
                     initial={{ opacity: 0, x: 0, y: 0 }}
-                    whileInView={{ opacity: 0.4, x, y }}
+                    whileInView={{
+                        opacity: 0.4,
+                        x: "calc(var(--x-pos, " + x + ") * var(--scale, 1))",
+                        y: "calc(var(--y-pos, " + y + ") * var(--scale, 1))"
+                    }}
                     viewport={{ once: true }}
                     transition={{ duration: 1, delay: delay * 0.5 }}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                    className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 [--scale:0.55] md:[--scale:1] icon-pos-${i}`}
+                    style={{ '--y-pos': y, '--x-pos': x } as any}
                 >
                     <motion.div
                         animate={{ y: [0, -20, 0], x: [0, 8, -8, 0], rotate: [0, 10, -10, 0] }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: delay }}
                     >
-                        <Icon size={48} strokeWidth={1} className="text-slate-400" />
+                        <Icon size={32} strokeWidth={1} className="text-slate-400 md:w-12 md:h-12" />
                     </motion.div>
                 </motion.div>
             ))}
         </div>
 
+        <style jsx>{`
+            @media (max-width: 768px) {
+                .icon-pos-0 { --y-pos: -40vh !important; --x-pos: -32vw !important; }
+                .icon-pos-1 { --y-pos: -35vh !important; --x-pos: 30vw !important; }
+                .icon-pos-2 { --y-pos: -45vh !important; }
+                .icon-pos-3 { --y-pos: 40vh !important; --x-pos: -30vw !important; }
+                .icon-pos-4 { --y-pos: 35vh !important; --x-pos: 32vw !important; }
+            }
+        `}</style>
+
         {/* Header */}
-        <div className="relative mb-16 md:mb-20">
+        <div className="relative mb-8 md:mb-20">
             <motion.h2
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="text-7xl md:text-9xl font-black text-slate-900 tracking-tighter relative z-10"
+                className="text-6xl md:text-9xl font-black text-slate-900 tracking-tighter relative z-10"
             >
                 The Problem:
             </motion.h2>

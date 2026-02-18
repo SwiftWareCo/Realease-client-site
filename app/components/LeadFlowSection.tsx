@@ -28,34 +28,16 @@ export default function LeadFlowSection() {
                 </Reveal>
 
                 <Reveal delay={0.1}>
-                    <div
-                        style={{
-                            display: "flex",
-                            overflowX: "auto",
-                            gap: 0,
-                            paddingBottom: 8,
-                            scrollSnapType: "x mandatory",
-                            WebkitOverflowScrolling: "touch",
-                        }}
-                    >
+                    <div className="flow-container">
                         {flowSteps.map((step, i) => (
                             <div
                                 key={step.title}
-                                style={{
-                                    flex: "0 0 16.66%",
-                                    minWidth: 180,
-                                    scrollSnapAlign: "start",
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "center",
-                                    textAlign: "center",
-                                    position: "relative",
-                                    padding: "0 16px",
-                                }}
+                                className="flow-step"
                             >
                                 {/* Connector line */}
                                 {i < flowSteps.length - 1 && (
                                     <div
+                                        className="connector-line"
                                         style={{
                                             position: "absolute",
                                             top: 30,
@@ -99,6 +81,62 @@ export default function LeadFlowSection() {
                     </div>
                 </Reveal>
             </div>
+
+            <style jsx>{`
+                .flow-container {
+                    display: flex;
+                    overflow-x: auto;
+                    gap: 0;
+                    padding-bottom: 24px;
+                    scroll-snap-type: x mandatory;
+                    -webkit-overflow-scrolling: touch;
+                }
+
+                .flow-step {
+                    flex: 0 0 16.66%;
+                    min-width: 180px;
+                    scroll-snap-align: start;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                    position: relative;
+                    padding: 0 16px;
+                }
+
+                @media (max-width: 1024px) {
+                    .flow-step {
+                        flex: 0 0 33.33%;
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .flow-step {
+                        flex: 0 0 50%;
+                    }
+                    .connector-line {
+                        display: none !important;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .flow-step {
+                        flex: 0 0 85%;
+                    }
+                    .flow-container {
+                        padding-left: 10%;
+                        padding-right: 10%;
+                    }
+                }
+
+                .flow-container::-webkit-scrollbar {
+                    height: 4px;
+                }
+                .flow-container::-webkit-scrollbar-thumb {
+                    background: rgba(245,158,11,0.2);
+                    border-radius: 10px;
+                }
+            `}</style>
         </section>
     );
 }

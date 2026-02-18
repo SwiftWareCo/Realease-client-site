@@ -54,10 +54,8 @@ export default function Footer() {
         >
             <div style={{ maxWidth: 1200, margin: "0 auto" }}>
                 <div
+                    className="footer-grid"
                     style={{
-                        display: "grid",
-                        gridTemplateColumns: "1.5fr repeat(4, 1fr)",
-                        gap: 40,
                         marginBottom: 60,
                     }}
                 >
@@ -91,7 +89,7 @@ export default function Footer() {
 
                     {/* Link Columns */}
                     {columns.map((col) => (
-                        <div key={col.title}>
+                        <div key={col.title} className="footer-column">
                             <h4
                                 style={{
                                     fontSize: "0.8rem",
@@ -186,15 +184,30 @@ export default function Footer() {
             </div>
 
             <style jsx>{`
-        @media (max-width: 768px) {
-          footer > div > div:first-child {
-            grid-template-columns: 1fr 1fr !important;
-          }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
         }
+
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1.5fr repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         @media (max-width: 480px) {
-          footer > div > div:first-child {
-            grid-template-columns: 1fr !important;
-          }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
         }
       `}</style>
         </footer>

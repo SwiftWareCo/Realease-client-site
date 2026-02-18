@@ -5,13 +5,13 @@ import { ArrowRight } from "lucide-react";
 import CalendlyButton from "../../components/common/CalendlyButton";
 
 const MissionSlide = () => (
-    <div className="relative z-10 max-w-5xl text-center px-6 h-full flex flex-col justify-center items-center overflow-hidden">
+    <div className="relative z-10 max-w-5xl text-center px-6 h-full flex flex-col justify-start md:justify-center items-center overflow-y-auto md:overflow-hidden pt-32 md:pt-0 pb-20">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-[0.07] pointer-events-none">
             {/* Large Gear */}
             <motion.svg
-                width="420" height="420" viewBox="0 0 100 100"
-                className="absolute top-1/2 left-1/2"
-                style={{ marginTop: -210, marginLeft: -240 }}
+                width="280" height="280" viewBox="0 0 100 100"
+                className="absolute top-1/2 left-1/2 md:w-[420px] md:h-[420px]"
+                style={{ marginTop: -140, marginLeft: -160 }}
                 animate={{ rotate: 360 }}
                 transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
             >
@@ -20,9 +20,9 @@ const MissionSlide = () => (
             </motion.svg>
             {/* Small Gear */}
             <motion.svg
-                width="220" height="220" viewBox="0 0 100 100"
-                className="absolute top-1/2 left-1/2"
-                style={{ marginTop: -20, marginLeft: 40 }}
+                width="150" height="150" viewBox="0 0 100 100"
+                className="absolute top-1/2 left-1/2 md:w-[220px] md:h-[220px]"
+                style={{ marginTop: -20, marginLeft: 20 }}
                 animate={{ rotate: -360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             >
@@ -31,11 +31,11 @@ const MissionSlide = () => (
             </motion.svg>
         </div>
 
-        <h1 className="text-5xl md:text-8xl font-bold mb-12 tracking-tight text-slate-900">
+        <h1 className="text-2xl md:text-8xl font-bold mb-6 md:mb-12 tracking-tight text-slate-900">
             The System Behind<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600">Your Momentum</span>.
         </h1>
-        <p className="text-2xl text-slate-500 mb-16 max-w-2xl mx-auto font-light">
+        <p className="text-base md:text-2xl text-slate-500 mb-6 md:mb-16 max-w-2xl mx-auto font-light">
             Clarity. Control. Execution.
         </p>
         <div className="flex flex-col md:flex-row gap-6 justify-center mt-4">

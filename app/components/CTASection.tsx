@@ -13,13 +13,14 @@ export default function CTASection({ }: CTASectionProps) {
             <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
                 <Reveal>
                     <p style={{ fontSize: "0.85rem", fontWeight: 600, color: "rgba(255,255,255,0.5)", marginBottom: 20 }}>Join 500+ Realtors Already Using RealEase</p>
-                    <h2 style={{ fontFamily: "var(--font-dm-sans)", color: "white", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", marginBottom: 16, whiteSpace: "nowrap" }}>
+                    <h2 className="cta-heading" style={{ fontFamily: "var(--font-dm-sans)", color: "white", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", marginBottom: 16, whiteSpace: "nowrap" }}>
                         Ready to Close More Deals with Less Effort?
                     </h2>
                     <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "1rem", maxWidth: 500, margin: "0 auto 36px", lineHeight: 1.7 }}>
                         See how AI transforms your lead management, follow-ups, and deal flow — in just 30 minutes.
                     </p>
                     <CalendlyButton
+                        className="cta-button"
                         style={{
                             padding: "16px 40px",
                             background: "linear-gradient(135deg, #F59E0B, #D97706)",
@@ -35,7 +36,7 @@ export default function CTASection({ }: CTASectionProps) {
                     >
                         See It in Action <ArrowRight size={18} style={{ display: "inline", verticalAlign: "middle", marginLeft: 8 }} />
                     </CalendlyButton>
-                    <div style={{ display: "flex", gap: 20, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
+                    <div className="cta-stats" style={{ display: "flex", gap: 20, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
                         {["Free 14-day trial", "No credit card", "Cancel anytime"].map((item) => (
                             <span key={item} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: "0.8rem", color: "rgba(255,255,255,0.5)" }}>
                                 <Check size={14} style={{ color: "#F59E0B" }} /> {item}
@@ -44,6 +45,22 @@ export default function CTASection({ }: CTASectionProps) {
                     </div>
                 </Reveal>
             </div>
+
+            <style jsx>{`
+                @media (max-width: 768px) {
+                    .cta-heading {
+                        white-space: normal !important;
+                        font-size: 1.8rem !important;
+                    }
+                    .cta-button {
+                        width: 100% !important;
+                        padding: 14px 24px !important;
+                    }
+                    .cta-stats {
+                        gap: 12px !important;
+                    }
+                }
+            `}</style>
         </section>
     );
 }

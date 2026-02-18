@@ -34,40 +34,15 @@ const ProductHero = ({
 }: ProductHeroProps) => {
     return (
         <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", paddingTop: 100, paddingBottom: 60, position: "relative", overflow: "hidden" }}>
-            {/* Back Button */}
-            <Link
-                href={fromSection ? `/#${sectionId}` : "/"}
-                style={{
-                    position: "fixed",
-                    top: 80,
-                    left: 24,
-                    zIndex: 1000,
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 6,
-                    fontSize: "0.85rem",
-                    color: color,
-                    textDecoration: "none",
-                    fontWeight: 600,
-                    background: "rgba(255,255,255,0.85)",
-                    backdropFilter: "blur(12px)",
-                    padding: "8px 16px",
-                    borderRadius: 50,
-                    border: `1px solid ${accentColor}`,
-                    boxShadow: "0 2px 12px rgba(0,0,0,0.06)"
-                }}
-            >
-                <ArrowLeft size={16} /> Back to Home
-            </Link>
 
             <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(${accentColor} 1px, transparent 1px), linear-gradient(90deg, ${accentColor} 1px, transparent 1px)`, backgroundSize: "60px 60px", pointerEvents: "none" }} />
             <div style={{ position: "absolute", top: -100, right: -100, width: 600, height: 600, borderRadius: "50%", background: `radial-gradient(circle, ${accentColor.replace('0.04', '0.10')}, transparent 70%)`, filter: "blur(60px)", pointerEvents: "none" }} />
 
             <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", width: "100%", position: "relative", zIndex: 1 }}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
-                    <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+                <div className="product-hero-grid">
+                    <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="product-info">
 
-                        <div style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "12px 28px", background: accentColor, borderRadius: 50, marginBottom: 24, border: `1px solid ${accentColor.replace('0.06', '0.12')}` }}>
+                        <div className="product-badge" style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "12px 28px", background: accentColor, borderRadius: 50, marginBottom: 24, border: `1px solid ${accentColor.replace('0.06', '0.12')}` }}>
                             <div style={{ color: color }}>{icon}</div>
                             <span style={{ fontSize: "0.95rem", fontWeight: 600, color: color }}>{badgeText}</span>
                         </div>
@@ -79,11 +54,11 @@ const ProductHero = ({
                             </span>
                         </h1>
 
-                        <div style={{ fontSize: "1.05rem", color: "#64748B", lineHeight: 1.7, marginBottom: 32, maxWidth: 500 }}>
+                        <div className="product-description" style={{ fontSize: "1.05rem", color: "#64748B", lineHeight: 1.7, marginBottom: 32, maxWidth: 500 }}>
                             {description}
                         </div>
 
-                        <div style={{ display: "flex", gap: 24, marginBottom: 32 }}>
+                        <div className="product-stats" style={{ display: "flex", gap: 24, marginBottom: 32 }}>
                             {stats.map((s) => (
                                 <div key={s.label}>
                                     <p style={{ fontSize: "1.5rem", fontWeight: 800, color: color, fontFamily: "var(--font-dm-sans)" }}>{s.value}</p>
@@ -97,11 +72,72 @@ const ProductHero = ({
                         </div>
                     </motion.div>
 
-                    <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.3 }}>
+                    <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="product-preview">
                         {previewContent}
                     </motion.div>
                 </div>
             </div>
+
+            <style jsx>{`
+                .product-hero-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 64px;
+                    align-items: center;
+                }
+
+                @media (max-width: 991px) {
+                    .product-hero-grid {
+                        grid-template-columns: 1fr;
+                        gap: 48px;
+                        text-align: center;
+                    }
+                    
+                    .back-button {
+                        position: absolute !important;
+                        top: 20px !important;
+                        left: 20px !important;
+                    }
+
+                    .product-info {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+
+                    .product-badge {
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+
+                    .product-description {
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+
+                    .product-stats {
+                        justify-content: center;
+                    }
+
+                    .product-preview {
+                        width: 100%;
+                        max-width: 450px;
+                        margin: 0 auto;
+                        transform: scale(0.9);
+                        transform-origin: top center;
+                    }
+                    
+                    /* Custom height management for very long previews */
+                    .product-preview > div {
+                        max-height: 480px;
+                        overflow-y: auto;
+                        scrollbar-width: none; /* Firefox */
+                    }
+                    .product-preview > div::-webkit-scrollbar {
+                        display: none; /* Chrome/Safari */
+                    }
+                }
+            `}</style>
         </section>
     );
 };

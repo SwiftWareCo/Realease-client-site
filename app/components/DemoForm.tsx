@@ -124,6 +124,7 @@ export default function DemoForm({ isOpen, onClose }: DemoFormProps) {
                             <>
                                 <div style={{ marginBottom: 28 }}>
                                     <h3
+                                        className="demo-title"
                                         style={{
                                             fontSize: "1.5rem",
                                             fontWeight: 800,
@@ -155,6 +156,7 @@ export default function DemoForm({ isOpen, onClose }: DemoFormProps) {
                                     }}
                                 >
                                     <div
+                                        className="form-grid"
                                         style={{
                                             display: "grid",
                                             gridTemplateColumns: "1fr 1fr",
@@ -208,6 +210,7 @@ export default function DemoForm({ isOpen, onClose }: DemoFormProps) {
                                     </div>
 
                                     <div
+                                        className="form-grid"
                                         style={{
                                             display: "grid",
                                             gridTemplateColumns: "1fr 1fr",
@@ -364,6 +367,17 @@ export default function DemoForm({ isOpen, onClose }: DemoFormProps) {
                             </motion.div>
                         )}
                     </motion.div>
+                    <style jsx>{`
+                        @media (max-width: 640px) {
+                            .form-grid {
+                                grid-template-columns: 1fr !important;
+                                gap: 12px !important;
+                            }
+                            .demo-title {
+                                font-size: 1.25rem !important;
+                            }
+                        }
+                    `}</style>
                 </motion.div>
             )}
         </AnimatePresence>

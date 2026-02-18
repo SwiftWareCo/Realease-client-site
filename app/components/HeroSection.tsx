@@ -53,13 +53,24 @@ export default function HeroSection({ }: HeroSectionProps) {
             <div style={{ position: "absolute", bottom: -100, left: -50, width: 450, height: 450, borderRadius: "50%", background: "radial-gradient(circle, rgba(217,119,6,0.08), transparent 70%)", filter: "blur(60px)", pointerEvents: "none" }} />
 
             <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", width: "100%", position: "relative", zIndex: 1 }}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+                <div className="hero-grid">
                     {/* Left — Copy */}
-                    <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-                        <div id="hero-logo-container" style={{ display: "flex", alignItems: "flex-end", gap: 24, marginBottom: 40 }}>
+                    <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="hero-copy">
+                        {/* Logo & Banner Area */}
+                        <div
+                            id="hero-logo-container"
+                            className="hero-logo-row"
+                            style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: 16,
+                                marginBottom: 24
+                            }}
+                        >
                             <img
                                 src="/realease-logo.png"
                                 alt="RealEase Logo"
+                                className="hero-logo-img"
                                 style={{ width: "240px", height: "auto" }}
                             />
                             <div
@@ -71,6 +82,7 @@ export default function HeroSection({ }: HeroSectionProps) {
                                     background: "rgba(245,158,11,0.06)",
                                     borderRadius: 50,
                                     border: "1px solid rgba(245,158,11,0.12)",
+                                    width: "fit-content"
                                 }}
                             >
                                 <Sparkles size={14} style={{ color: "#F59E0B" }} />
@@ -78,7 +90,7 @@ export default function HeroSection({ }: HeroSectionProps) {
                             </div>
                         </div>
 
-                        <div style={{ height: "180px", position: "relative", marginBottom: 20 }}>
+                        <div className="headline-container" style={{ height: "180px", position: "relative", marginBottom: 20 }}>
                             <AnimatePresence mode="wait">
                                 <motion.h1
                                     key={currentPhrase}
@@ -118,11 +130,11 @@ export default function HeroSection({ }: HeroSectionProps) {
                             </AnimatePresence>
                         </div>
 
-                        <p style={{ fontSize: "1.05rem", color: "#64748B", lineHeight: 1.7, marginBottom: 32, maxWidth: 500 }}>
+                        <p className="hero-description" style={{ fontSize: "1.05rem", color: "#64748B", lineHeight: 1.7, marginBottom: 32, maxWidth: 500 }}>
                             <strong>RealEase</strong> does the work that <strong>keeps deals alive</strong> — so you can focus on the moments that close them.
                         </p>
 
-                        <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+                        <div className="hero-buttons" style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
                             <CalendlyButton className="btn-primary">
                                 See It in Action <ArrowRight size={18} />
                             </CalendlyButton>
@@ -132,8 +144,7 @@ export default function HeroSection({ }: HeroSectionProps) {
                         </div>
                     </motion.div>
 
-                    {/* Right — Dashboard Mockup */}
-                    <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.3 }}>
+                    <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="hero-dashboard">
                         <div
                             style={{
                                 background: "linear-gradient(135deg, #F8F9FC, #EEF2FF)",
@@ -191,6 +202,76 @@ export default function HeroSection({ }: HeroSectionProps) {
                     </motion.div>
                 </div>
             </div>
+
+            <style jsx>{`
+                .hero-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 64px;
+                    align-items: center;
+                }
+
+                .hero-logo-row {
+                    align-items: flex-start;
+                }
+
+                @media (max-width: 991px) {
+                    .hero-grid {
+                        grid-template-columns: 1fr;
+                        gap: 48px;
+                        text-align: center;
+                    }
+                    
+                    .hero-copy {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+
+                    .hero-logo-row {
+                        align-items: center;
+                        margin-bottom: 32px !important;
+                    }
+
+
+                    .headline-container {
+                        height: auto !important;
+                        min-height: 120px;
+                        position: relative !important;
+                    }
+
+                    .headline-container h1 {
+                        position: relative !important;
+                        left: 0 !important;
+                    }
+
+                    .hero-description {
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+
+                    .hero-buttons {
+                        justify-content: center;
+                    }
+
+                    .hero-dashboard {
+                        max-width: 500px;
+                        margin: 0 auto;
+                        width: 100%;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    
+                    .hero-logo-img {
+                        width: 180px !important;
+                    }
+
+                    .headline-container {
+                        min-height: 140px;
+                    }
+                }
+            `}</style>
         </section>
     );
 }

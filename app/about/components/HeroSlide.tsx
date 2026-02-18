@@ -10,10 +10,10 @@ const HeroSlide = () => (
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
         >
-            <h1 className="text-5xl md:text-9xl font-bold tracking-tighter mb-8 text-slate-900">
+            <h1 className="text-5xl md:text-9xl font-bold tracking-tighter mb-4 md:mb-8 text-slate-900">
                 Reimagining
             </h1>
-            <h1 className="text-5xl md:text-9xl font-bold tracking-tighter mb-24 pb-2">
+            <h1 className="text-5xl md:text-9xl font-bold tracking-tighter mb-12 md:mb-24 pb-2">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600">
                     Workflow
                 </span>

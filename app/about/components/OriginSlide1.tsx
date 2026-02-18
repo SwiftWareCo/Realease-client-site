@@ -4,28 +4,28 @@ import { motion } from "framer-motion";
 import { Target } from "lucide-react";
 
 const OriginSlide1 = () => (
-    <div className="grid md:grid-cols-2 gap-12 md:gap-24 max-w-7xl w-full items-center px-6 h-full">
-        <div className="relative">
-            <span className="text-9xl font-black text-slate-100 absolute -top-20 -left-20 -z-10 select-none">01</span>
-            <div className="inline-flex items-center gap-1 px-12 py-3 bg-orange-100 text-orange-700 rounded-full font-medium text-sm">
-                <Target size={20} /> The Origin
+    <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-24 max-w-7xl w-full items-center px-6 h-full pt-32 md:pt-0 overflow-y-auto md:overflow-hidden">
+        <div className="relative w-full">
+            <span className="text-6xl md:text-9xl font-black text-slate-100 absolute -top-8 -left-8 md:-top-20 md:-left-20 -z-10 select-none">01</span>
+            <div className="inline-flex items-center gap-1 px-8 md:px-12 py-2 md:py-3 bg-orange-100 text-orange-700 rounded-full font-medium text-xs md:text-sm">
+                <Target size={18} /> The Origin
             </div>
 
             {/* Spacer */}
             <div className="h-1.5" aria-hidden="true" />
 
-            <h3 className="text-4xl md:text-6xl font-bold text-slate-900 leading-tight">
+            <h3 className="text-2xl md:text-6xl font-bold text-slate-900 leading-tight">
                 The Real Estate Perspective
             </h3>
 
             {/* Spacer */}
-            <div className="h-3" aria-hidden="true" />
+            <div className="h-2" aria-hidden="true" />
 
-            <p className="text-xl md:text-2xl text-slate-600 leading-relaxed font-light">
+            <p className="text-lg md:text-2xl text-slate-600 leading-relaxed font-light">
                 Through his background in real estate, one of our founders saw firsthand how easily leads fall through the cracks when workflows are scattered. <span className="font-semibold text-slate-900">The gap wasn’t effort — it was infrastructure.</span>
             </p>
         </div>
-        <div className="h-[400px] md:h-[500px] bg-slate-50 rounded-[3rem] p-8 relative overflow-hidden group border border-slate-100 flex items-center justify-center">
+        <div className="h-[300px] md:h-[500px] w-full bg-slate-50 rounded-[2.5rem] p-6 md:p-8 relative overflow-hidden group border border-slate-100 flex items-center justify-center shrink-0 mb-8 md:mb-0">
             {/* Minimalist Broken Pipeline Visual */}
             <div className="relative w-full max-w-md aspect-video flex flex-col items-center justify-center">
                 <svg width="100%" height="100%" viewBox="0 0 400 200" className="overflow-visible">

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowLeft } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 
 declare global {
@@ -14,7 +14,7 @@ declare global {
 
 import CalendlyButton from "./common/CalendlyButton";
 
-export default function Navbar() {
+export default function Navbar({ showBack = false }: { showBack?: boolean }) {
     const [scrolled, setScrolled] = useState(false);
     const [showLogo, setShowLogo] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -106,30 +106,58 @@ export default function Navbar() {
                         justifyContent: "space-between",
                     }}
                 >
-                    {/* Logo */}
-                    <div style={{ width: 140, height: 50, display: "flex", alignItems: "center" }}>
+                    {/* Logo & Back Button */}
+                    <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
                         <AnimatePresence>
-                            {showLogo && (
+                            {showBack && (
                                 <motion.a
-                                    href="#"
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: 10 }}
-                                    transition={{ duration: 0.3 }}
+                                    href="/"
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
                                     style={{
                                         display: "flex",
                                         alignItems: "center",
+                                        gap: 6,
+                                        fontSize: "0.85rem",
+                                        color: "#F59E0B",
                                         textDecoration: "none",
+                                        fontWeight: 600,
+                                        background: "white",
+                                        padding: "6px 12px",
+                                        borderRadius: 50,
+                                        border: "1px solid rgba(245,158,11,0.2)",
+                                        boxShadow: "0 2px 8px rgba(0,0,0,0.05)"
                                     }}
                                 >
-                                    <img
-                                        src="/realease-logo.png"
-                                        alt="RealEase Logo"
-                                        style={{ width: "140px", height: "auto" }}
-                                    />
+                                    <ArrowLeft size={16} /> <span className="hidden sm:inline">Back</span>
                                 </motion.a>
                             )}
                         </AnimatePresence>
+
+                        <div style={{ width: 140, height: 50, display: "flex", alignItems: "center" }}>
+                            <AnimatePresence>
+                                {(showLogo || showBack) && (
+                                    <motion.a
+                                        href="/"
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: 10 }}
+                                        transition={{ duration: 0.3 }}
+                                        style={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            textDecoration: "none",
+                                        }}
+                                    >
+                                        <img
+                                            src="/realease-logo.png"
+                                            alt="RealEase Logo"
+                                            style={{ width: "140px", height: "auto" }}
+                                        />
+                                    </motion.a>
+                                )}
+                            </AnimatePresence>
+                        </div>
                     </div>
 
                     {/* Desktop Nav */}

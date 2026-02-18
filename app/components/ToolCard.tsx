@@ -23,17 +23,14 @@ const ToolCard = ({ tool, index }: ToolCardProps) => {
         <Reveal key={tool.title} delay={0.1}>
             <div
                 id={tool.slug}
+                className="tool-card-grid"
                 style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: 48,
-                    alignItems: "center",
                     direction: index % 2 === 1 ? "rtl" : "ltr",
-                    scrollMarginTop: "240px",
                 }}
             >
-                <div style={{ direction: "ltr" }}>
+                <div className="tool-copy" style={{ direction: "ltr" }}>
                     <div
+                        className="tool-icon-box"
                         style={{
                             width: 60,
                             height: 60,
@@ -50,7 +47,7 @@ const ToolCard = ({ tool, index }: ToolCardProps) => {
                     </div>
                     <h3 style={{ fontSize: "1.5rem", fontWeight: 800, fontFamily: "var(--font-dm-sans)", letterSpacing: "-0.02em", marginBottom: 14 }}>{tool.title}</h3>
                     <div style={{ fontSize: "0.95rem", color: "#64748B", lineHeight: 1.8, marginBottom: 24 }}>{tool.desc}</div>
-                    <div style={{ display: "flex", gap: 24, marginBottom: 20 }}>
+                    <div className="tool-stats" style={{ display: "flex", gap: 24, marginBottom: 20 }}>
                         {tool.stats.map((s) => (
                             <div key={s.label}>
                                 <p style={{ fontSize: "1.3rem", fontWeight: 800, color: tool.color, fontFamily: "var(--font-dm-sans)" }}>{s.value}</p>
@@ -84,7 +81,7 @@ const ToolCard = ({ tool, index }: ToolCardProps) => {
                 </div>
 
                 {/* Live preview card */}
-                <div style={{ direction: "ltr" }}>
+                <div className="tool-preview" style={{ direction: "ltr" }}>
                     <div
                         style={{
                             background: "linear-gradient(135deg, #F8F9FC, #EEF2FF)",
@@ -115,6 +112,46 @@ const ToolCard = ({ tool, index }: ToolCardProps) => {
                     </div>
                 </div>
             </div>
+
+            <style jsx>{`
+                .tool-card-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 48px;
+                    align-items: center;
+                    scroll-margin-top: 240px;
+                }
+
+                @media (max-width: 991px) {
+                    .tool-card-grid {
+                        grid-template-columns: 1fr;
+                        gap: 32px;
+                        direction: ltr !important;
+                        text-align: center;
+                    }
+
+                    .tool-copy {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+
+                    .tool-icon-box {
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+
+                    .tool-stats {
+                        justify-content: center;
+                    }
+
+                    .tool-preview {
+                        max-width: 500px;
+                        margin: 0 auto;
+                        width: 100%;
+                    }
+                }
+            `}</style>
         </Reveal>
     );
 };

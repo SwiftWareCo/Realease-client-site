@@ -108,11 +108,9 @@ export default function About() {
 
 
     return (
-        <main className="h-screen w-screen overflow-hidden relative">
-            <Navbar />
-            <Link href="/" style={{ position: "fixed", top: 80, left: 24, zIndex: 1000, display: "inline-flex", alignItems: "center", gap: 6, fontSize: "0.85rem", color: "#F59E0B", textDecoration: "none", fontWeight: 600, background: "rgba(255,255,255,0.85)", backdropFilter: "blur(12px)", padding: "8px 16px", borderRadius: 50, border: "1px solid rgba(245,158,11,0.15)", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
-                <ArrowLeft size={16} /> Back to Home
-            </Link>
+        <main className="h-[100dvh] w-screen overflow-hidden relative">
+            <Navbar showBack />
+
 
             {/* Slide Container */}
             <motion.div

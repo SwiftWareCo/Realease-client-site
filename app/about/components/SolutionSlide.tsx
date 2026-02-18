@@ -4,12 +4,14 @@ import Image from "next/image";
 import { Zap } from "lucide-react";
 
 const SolutionSlide = () => (
-    <div className="flex flex-col md:flex-row items-center gap-16 w-full max-w-7xl px-12 md:px-20 h-auto md:h-[85%] justify-center">
-        <div className="flex-1">
-            <h2 className="text-sm font-bold tracking-widest text-orange-700" style={{ marginBottom: 28 }}>The Solution:</h2>
-            <Image src="/realease-logo.png" alt="RealEase" width={400} height={100} className="object-contain" />
-            <div className="h-1 w-20 bg-orange-300 rounded-full" style={{ marginTop: 16 }} />
-            <p className="text-xl md:text-2xl text-orange-900/80" style={{ marginTop: 40, lineHeight: 1.4 }}>
+    <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-16 w-full max-w-7xl px-8 md:px-20 h-full md:h-[85%] justify-start md:justify-center pt-32 md:pt-0 overflow-y-auto md:overflow-hidden">
+        <div className="flex-1 text-center md:text-left flex flex-col items-center md:items-start">
+            <h2 className="text-xs md:text-sm font-bold tracking-widest text-orange-700 mb-4 md:mb-7 uppercase">The Solution:</h2>
+            <div className="max-w-[180px] md:max-w-[400px] w-full">
+                <Image src="/realease-logo.png" alt="RealEase" width={400} height={100} className="object-contain w-full h-auto" />
+            </div>
+            <div className="h-1 w-12 md:w-20 bg-orange-300 rounded-full mt-3 md:mt-4" />
+            <p className="text-sm md:text-2xl text-orange-900/80 mt-6 md:mt-10 leading-snug">
                 Not just another CRM.<br />
                 An <span className="text-orange-600 font-semibold">Operating System</span> for your <span className="font-bold">entire workflow</span>.
             </p>

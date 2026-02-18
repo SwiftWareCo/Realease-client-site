@@ -30,14 +30,7 @@ export default function ComparisonSection() {
 
                 {/* Inline Stats Bar */}
                 <Reveal delay={0.05}>
-                    <div
-                        style={{
-                            display: "grid",
-                            gridTemplateColumns: "repeat(4, 1fr)",
-                            gap: 14,
-                            marginBottom: 28,
-                        }}
-                    >
+                    <div className="stats-grid">
                         {[
                             { icon: <TrendingUp size={16} />, value: 47, suffix: "%", label: "Higher Conversion", color: "#F59E0B" },
                             { icon: <CalendarDays size={16} />, value: 4, suffix: "x", label: "More Booked Appointments", color: "#7C3AED" },
@@ -46,6 +39,7 @@ export default function ComparisonSection() {
                         ].map((stat) => (
                             <div
                                 key={stat.label}
+                                className="stat-card"
                                 style={{
                                     display: "flex",
                                     alignItems: "center",
@@ -71,7 +65,7 @@ export default function ComparisonSection() {
                 {/* Comparison Table */}
                 <Reveal delay={0.15}>
                     <div style={{ background: "white", borderRadius: 20, overflow: "hidden", boxShadow: "0 4px 24px rgba(0,0,0,0.06)", border: "1px solid #E2E8F0" }}>
-                        <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr", background: "#F8F9FC", padding: "16px 28px" }}>
+                        <div className="comparison-table comparison-header" style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr", background: "#F8F9FC", padding: "16px 28px" }}>
                             <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em" }}>Feature</span>
                             <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "#EF4444", textTransform: "uppercase", letterSpacing: "0.08em", textAlign: "center" }}>Traditional</span>
                             <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "#F59E0B", textTransform: "uppercase", letterSpacing: "0.08em", textAlign: "center" }}>RealEase</span>
@@ -79,6 +73,7 @@ export default function ComparisonSection() {
                         {comparisonRows.map((row, i) => (
                             <div
                                 key={row.feature}
+                                className="comparison-table comparison-row"
                                 style={{
                                     display: "grid",
                                     gridTemplateColumns: "1.5fr 1fr 1fr",
@@ -87,7 +82,7 @@ export default function ComparisonSection() {
                                     background: i % 2 === 0 ? "white" : "#FCFCFD",
                                 }}
                             >
-                                <span style={{ fontSize: "0.87rem", fontWeight: 600, color: "#0F172A" }}>{row.feature}</span>
+                                <span className="feature-name" style={{ fontSize: "0.87rem", fontWeight: 600, color: "#0F172A" }}>{row.feature}</span>
                                 <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
                                     <XIcon size={14} style={{ color: "#EF4444" }} />
                                     <span style={{ fontSize: "0.82rem", color: "#94A3B8" }}>{row.old}</span>
@@ -101,6 +96,52 @@ export default function ComparisonSection() {
                     </div>
                 </Reveal>
             </div>
+
+            <style jsx>{`
+                .stats-grid {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 14px;
+                    margin-bottom: 28px;
+                }
+
+                @media (max-width: 991px) {
+                    .stats-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 12px;
+                        margin-bottom: 24px;
+                    }
+                }
+
+                @media (max-width: 640px) {
+                    .stats-grid {
+                        grid-template-columns: 1fr;
+                    }
+                    
+                    .comparison-table {
+                        grid-template-columns: 1fr !important;
+                        padding: 20px !important;
+                        gap: 12px;
+                    }
+
+                    .comparison-header {
+                        display: none !important;
+                    }
+
+                    .comparison-row {
+                        text-align: center;
+                    }
+
+                    .feature-name {
+                        display: block;
+                        margin-bottom: 4px;
+                        color: #64748B !important;
+                        text-transform: uppercase;
+                        font-size: 0.7rem !important;
+                        letter-spacing: 0.05em;
+                    }
+                }
+            `}</style>
         </section>
     );
 }

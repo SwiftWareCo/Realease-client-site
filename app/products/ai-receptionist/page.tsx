@@ -52,7 +52,7 @@ function AIReceptionistContent() {
 
     return (
         <>
-            <Navbar />
+            <Navbar showBack={true} />
 
             <ProductHero
                 title="Never Miss a Lead Call."
@@ -121,10 +121,11 @@ function AIReceptionistContent() {
                             Everything Your AI Receptionist <span style={{ background: "linear-gradient(135deg, #10B981, #059669)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Can Do</span>
                         </h2>
                     </motion.div>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+                    <div className="features-grid">
                         {features.map((f, i) => (
                             <motion.div
                                 key={f.title}
+                                className="feature-card"
                                 initial={{ opacity: 0, y: 24 }}
                                 whileInView={canAnimate ? { opacity: 1, y: 0 } : undefined}
                                 viewport={{ once: true, margin: "0px 0px -100px 0px" }}
@@ -139,7 +140,7 @@ function AIReceptionistContent() {
                                 onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 12px 40px rgba(16,185,129,0.08)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
                                 onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "translateY(0)"; }}
                             >
-                                <div style={{ width: 48, height: 48, borderRadius: 12, background: "rgba(16,185,129,0.06)", display: "flex", alignItems: "center", justifyContent: "center", color: "#10B981", marginBottom: 16 }}>
+                                <div className="feature-icon" style={{ width: 48, height: 48, borderRadius: 12, background: "rgba(16,185,129,0.06)", display: "flex", alignItems: "center", justifyContent: "center", color: "#10B981", marginBottom: 16 }}>
                                     {f.icon}
                                 </div>
                                 <h3 style={{ fontSize: "1.1rem", fontWeight: 700, fontFamily: "var(--font-dm-sans)", marginBottom: 8 }}>{f.title}</h3>
@@ -165,6 +166,39 @@ function AIReceptionistContent() {
                     <CalendlyButton text="See It in Action" color="#10B981" />
                 </motion.div>
             </section>
+
+
+
+            <style jsx>{`
+                .features-grid {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 24px;
+                }
+
+                @media (max-width: 1024px) {
+                    .features-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .features-grid {
+                        grid-template-columns: 1fr;
+                        gap: 20px;
+                    }
+
+                    .feature-card {
+                        padding: 24px !important;
+                        text-align: center;
+                    }
+
+                    .feature-icon {
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                }
+            `}</style>
 
             <Footer />
         </>
