@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -18,7 +19,24 @@ interface ToolCardProps {
     index: number;
 }
 
+const useIsMobile = () => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 991);
+        };
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
+    return isMobile;
+};
+
 const ToolCard = ({ tool, index }: ToolCardProps) => {
+    const isMobile = useIsMobile();
+
     return (
         <Reveal key={tool.title} delay={0.1}>
             <div
@@ -80,37 +98,39 @@ const ToolCard = ({ tool, index }: ToolCardProps) => {
                     </Link>
                 </div>
 
-                {/* Live preview card */}
-                <div className="tool-preview" style={{ direction: "ltr" }}>
-                    <div
-                        style={{
-                            background: "linear-gradient(135deg, #F8F9FC, #EEF2FF)",
-                            borderRadius: 20,
-                            padding: 24,
-                            border: `1px solid ${tool.color}15`,
-                        }}
-                    >
-                        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-                            <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#10B981", animation: "pulse-soft 2s ease-in-out infinite" }} />
-                            <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "#10B981" }}>Live Preview</span>
-                        </div>
-                        <div style={{ background: "white", borderRadius: 14, padding: 20, display: "flex", flexDirection: "column", gap: 12 }}>
-                            {tool.liveText.map((line, idx) => (
-                                <motion.div
-                                    key={idx}
-                                    initial={{ opacity: 0, x: -10 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.3 + idx * 0.2 }}
-                                    style={{ display: "flex", gap: 8, alignItems: "flex-start" }}
-                                >
-                                    <span style={{ fontSize: "0.72rem", fontWeight: 700, color: line.speaker === "Lead" ? "#0F172A" : tool.color, flexShrink: 0, width: 50 }}>{line.speaker}:</span>
-                                    <span style={{ fontSize: "0.8rem", color: "#475569", lineHeight: 1.6 }}>{line.text}</span>
-                                </motion.div>
-                            ))}
+                {/* Live preview card - hidden on mobile */}
+                {!isMobile && (
+                    <div className="tool-preview" style={{ direction: "ltr" }}>
+                        <div
+                            style={{
+                                background: "linear-gradient(135deg, #F8F9FC, #EEF2FF)",
+                                borderRadius: 20,
+                                padding: 24,
+                                border: `1px solid ${tool.color}15`,
+                            }}
+                        >
+                            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+                                <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#10B981", animation: "pulse-soft 2s ease-in-out infinite" }} />
+                                <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "#10B981" }}>Live Preview</span>
+                            </div>
+                            <div style={{ background: "white", borderRadius: 14, padding: 20, display: "flex", flexDirection: "column", gap: 12 }}>
+                                {tool.liveText.map((line, idx) => (
+                                    <motion.div
+                                        key={idx}
+                                        initial={{ opacity: 0, x: -10 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: 0.3 + idx * 0.2 }}
+                                        style={{ display: "flex", gap: 8, alignItems: "flex-start" }}
+                                    >
+                                        <span style={{ fontSize: "0.72rem", fontWeight: 700, color: line.speaker === "Lead" ? "#0F172A" : tool.color, flexShrink: 0, width: 50 }}>{line.speaker}:</span>
+                                        <span style={{ fontSize: "0.8rem", color: "#475569", lineHeight: 1.6 }}>{line.text}</span>
+                                    </motion.div>
+                                ))}
+                            </div>
                         </div>
                     </div>
-                </div>
+                )}
             </div>
 
             <style jsx>{`
@@ -143,12 +163,6 @@ const ToolCard = ({ tool, index }: ToolCardProps) => {
 
                     .tool-stats {
                         justify-content: center;
-                    }
-
-                    .tool-preview {
-                        max-width: 500px;
-                        margin: 0 auto;
-                        width: 100%;
                     }
                 }
             `}</style>

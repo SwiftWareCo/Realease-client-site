@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import Link from "next/link";
@@ -19,6 +20,21 @@ interface ProductHeroProps {
     sectionId: string;
 }
 
+const useIsMobile = () => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 991);
+        };
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
+    return isMobile;
+};
+
 const ProductHero = ({
     title,
     titleAccent,
@@ -32,6 +48,8 @@ const ProductHero = ({
     fromSection,
     sectionId
 }: ProductHeroProps) => {
+    const isMobile = useIsMobile();
+
     return (
         <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", paddingTop: 100, paddingBottom: 60, position: "relative", overflow: "hidden" }}>
 
@@ -67,14 +85,16 @@ const ProductHero = ({
                             ))}
                         </div>
 
-                        <div className="flex items-center gap-4">
+                        <div className="product-button-container flex items-center gap-4">
                             <CalendlyButton text="See It in Action" color={color} />
                         </div>
                     </motion.div>
 
-                    <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="product-preview">
-                        {previewContent}
-                    </motion.div>
+                    {!isMobile && (
+                        <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="product-preview">
+                            {previewContent}
+                        </motion.div>
+                    )}
                 </div>
             </div>
 
@@ -119,22 +139,8 @@ const ProductHero = ({
                         justify-content: center;
                     }
 
-                    .product-preview {
-                        width: 100%;
-                        max-width: 450px;
-                        margin: 0 auto;
-                        transform: scale(0.9);
-                        transform-origin: top center;
-                    }
-                    
-                    /* Custom height management for very long previews */
-                    .product-preview > div {
-                        max-height: 480px;
-                        overflow-y: auto;
-                        scrollbar-width: none; /* Firefox */
-                    }
-                    .product-preview > div::-webkit-scrollbar {
-                        display: none; /* Chrome/Safari */
+                    .product-button-container {
+                        justify-content: center;
                     }
                 }
             `}</style>
