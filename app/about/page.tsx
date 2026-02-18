@@ -1,11 +1,10 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
-import { ArrowRight, ArrowLeft, Layers, Layout, Zap, Target, ShieldCheck, ChevronDown, ChevronRight, ChevronLeft, Mail, Calendar, Database, MessageSquare, AlertCircle, Phone } from "lucide-react";
+import { ArrowLeft, ChevronRight, ChevronLeft } from "lucide-react";
 
 import HeroSlide from "./components/HeroSlide";
 import OriginSlide1 from "./components/OriginSlide1";

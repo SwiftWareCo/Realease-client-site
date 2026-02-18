@@ -6,11 +6,12 @@ interface CalendlyButtonProps {
     className?: string;
     text?: string;
     variant?: "primary" | "outline";
+    color?: string; // Optional theme color
 }
 
 const CALENDLY_URL = "https://calendly.com/amarramadann/30min";
 
-const CalendlyButton = ({ className, text = "Book a Free Demo", variant = "primary" }: CalendlyButtonProps) => {
+const CalendlyButton = ({ className, text = "Book a Free Demo", variant = "primary", color }: CalendlyButtonProps) => {
     const openCalendly = () => {
         if (typeof window !== "undefined" && window.Calendly) {
             window.Calendly.initPopupWidget({ url: CALENDLY_URL });
@@ -19,40 +20,28 @@ const CalendlyButton = ({ className, text = "Book a Free Demo", variant = "prima
         }
     };
 
+    // Default primary color is orange if no color is provided
+    const primaryColor = color || "#F59E0B";
+
     const primaryStyles = {
         padding: "10px 24px",
-        background: "linear-gradient(135deg, #F59E0B, #D97706)",
-        color: "white",
-        border: "none",
+        background: variant === "primary" ? primaryColor : "transparent",
+        color: variant === "primary" ? "white" : "#475569",
+        border: variant === "primary" ? "none" : "1px solid rgba(226,232,240,0.6)",
         borderRadius: 50,
         fontSize: "0.875rem",
         fontWeight: 600,
         cursor: "pointer",
-        boxShadow: "0 4px 20px rgba(245,158,11,0.3)",
+        boxShadow: variant === "primary" ? `0 4px 20px ${primaryColor}4D` : "none", // 4D is 30% alpha in hex
         transition: "all 0.3s ease",
         fontFamily: "var(--font-inter), sans-serif",
     };
-
-    const outlineStyles = {
-        padding: "10px 24px",
-        background: "transparent",
-        color: "#475569",
-        border: "1px solid rgba(226,232,240,0.6)",
-        borderRadius: 50,
-        fontSize: "0.875rem",
-        fontWeight: 600,
-        cursor: "pointer",
-        transition: "all 0.3s ease",
-        fontFamily: "var(--font-inter), sans-serif",
-    };
-
-    const styles = variant === "primary" ? primaryStyles : outlineStyles;
 
     return (
         <motion.button
             onClick={openCalendly}
             className={className}
-            style={styles}
+            style={primaryStyles}
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
         >

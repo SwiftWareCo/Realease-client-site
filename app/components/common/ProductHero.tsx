@@ -93,7 +93,7 @@ const ProductHero = ({
                         </div>
 
                         <div className="flex items-center gap-4">
-                            <CalendlyButton text="See It in Action" />
+                            <CalendlyButton text="See It in Action" color={color} />
                         </div>
                     </motion.div>
 

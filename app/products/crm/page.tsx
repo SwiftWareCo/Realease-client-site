@@ -118,7 +118,7 @@ function CRMContent() {
                 >
                     <h2 style={{ fontFamily: "var(--font-dm-sans)", color: "white", fontSize: "clamp(1.6rem, 3vw, 2.2rem)", marginBottom: 16 }}>Ready to Ditch the Spreadsheets?</h2>
                     <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: 36, lineHeight: 1.7 }}>See how the AI-Powered CRM organizes your leads in a live demo.</p>
-                    <CalendlyButton text="See It in Action" />
+                    <CalendlyButton text="See It in Action" color="#F59E0B" />
                 </motion.div>
             </section>
 

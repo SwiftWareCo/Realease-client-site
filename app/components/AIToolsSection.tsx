@@ -5,7 +5,6 @@ import {
     Phone,
     MessageSquare,
     CalendarDays,
-    ArrowRight,
     Sparkles,
     Settings,
     Layers,
