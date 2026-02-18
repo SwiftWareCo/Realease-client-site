@@ -2,11 +2,10 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import CalendlyButton from "../../components/common/CalendlyButton";
 
 const MissionSlide = () => (
     <div className="relative z-10 max-w-5xl text-center px-6 h-full flex flex-col justify-center items-center overflow-hidden">
-
-        {/* Visual: Interlocking Gears */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-[0.07] pointer-events-none">
             {/* Large Gear */}
             <motion.svg
@@ -40,29 +39,11 @@ const MissionSlide = () => (
             Clarity. Control. Execution.
         </p>
         <div className="flex flex-col md:flex-row gap-6 justify-center mt-4">
-            <a
-                href="/#contact"
-                style={{
-                    padding: "16px 40px",
-                    background: "linear-gradient(135deg, #F59E0B, #D97706)",
-                    color: "white",
-                    border: "none",
-                    borderRadius: 50,
-                    fontSize: "1rem",
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    boxShadow: "0 4px 24px rgba(245,158,11,0.3)",
-                    transition: "transform 0.3s, box-shadow 0.3s",
-                    textDecoration: "none",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 12,
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 40px rgba(245,158,11,0.4)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 4px 24px rgba(245,158,11,0.3)"; }}
+            <CalendlyButton
+                className="!py-4 !px-10 !text-base shadow-lg"
             >
-                Take Control <ArrowRight size={18} style={{ display: "inline", verticalAlign: "middle" }} />
-            </a>
+                Take Control <ArrowRight size={18} className="inline ml-3" />
+            </CalendlyButton>
         </div>
         <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-full max-w-5xl px-6">
             <div className="pt-6 border-t border-slate-200 text-slate-400 text-sm text-center">

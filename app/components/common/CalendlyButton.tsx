@@ -7,11 +7,12 @@ interface CalendlyButtonProps {
     text?: string;
     variant?: "primary" | "outline";
     color?: string; // Optional theme color
+    children?: React.ReactNode;
 }
 
 const CALENDLY_URL = "https://calendly.com/amarramadann/30min";
 
-const CalendlyButton = ({ className, text = "Book a Free Demo", variant = "primary", color }: CalendlyButtonProps) => {
+const CalendlyButton = ({ className, text = "Book a Free Demo", variant = "primary", color, children }: CalendlyButtonProps) => {
     const openCalendly = () => {
         if (typeof window !== "undefined" && window.Calendly) {
             window.Calendly.initPopupWidget({ url: CALENDLY_URL });
@@ -45,7 +46,7 @@ const CalendlyButton = ({ className, text = "Book a Free Demo", variant = "prima
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
         >
-            {text}
+            {children || text}
         </motion.button>
     );
 };

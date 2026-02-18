@@ -49,7 +49,7 @@ const VisionSlide = () => (
                 </div>
                 <h3 className="text-4xl font-bold text-slate-900 mb-5 tracking-tight">Leverage</h3>
                 <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-light max-w-md">
-                    The future belongs to professionals supported by <span className="font-semibold text-slate-900">intelligent systems</span>. We automate the grunt work so you can focus on <span className="font-semibold text-slate-900">high-value interactions</span>.
+                    The future belongs to professionals supported by <span className="font-semibold text-slate-900">intelligent systems</span>. We automate the grunt work so you can focus on <span className="font-semibold text-slate-900">high-value&nbsp;interactions</span>.
                 </p>
             </motion.div>
 
@@ -67,7 +67,7 @@ const VisionSlide = () => (
                 <div className="relative top-[2px]">
                     <h3 className="text-4xl font-bold text-slate-900 mb-5 tracking-tight">Consistency</h3>
                     <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-light max-w-md">
-                        Systems that <span className="font-semibold text-slate-900">capture, qualify, nurture</span>, and organize opportunities <span className="font-semibold text-slate-900">automatically</span>—protecting your pipeline from human error.
+                        Systems that <span className="font-semibold text-slate-900">capture, qualify, nurture</span>, and organize opportunities <span className="font-semibold text-slate-900">automatically</span>—protecting your pipeline from human&nbsp;error.
                     </p>
                 </div>
             </motion.div>
