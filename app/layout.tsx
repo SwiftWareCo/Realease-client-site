@@ -17,9 +17,38 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://realease-client-site.vercel.app"),
   title: "RealEase — Your Real Estate Copilot",
   description:
     "AI-powered command center for realtors. Manage leads, automate follow-ups, close more deals.",
+  icons: {
+    icon: "/realease-favicon.png",
+    apple: "/realease-favicon.png",
+  },
+  openGraph: {
+    title: "RealEase — Your Real Estate Copilot",
+    description:
+      "AI-powered command center for realtors. Manage leads, automate follow-ups, close more deals.",
+    url: "https://realease.ai",
+    siteName: "RealEase",
+    images: [
+      {
+        url: "/realease-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "RealEase Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "RealEase — Your Real Estate Copilot",
+    description:
+      "AI-powered command center for realtors. Manage leads, automate follow-ups, close more deals.",
+    images: ["/realease-logo.png"],
+  },
 };
 
 export default function RootLayout({
