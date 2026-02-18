@@ -196,6 +196,17 @@ export default function LeadFlowSection() {
                     transition: all 0.2s;
                 }
             `}</style>
+
+            {/* Smooth transition to AIToolsSection */}
+            <div style={{
+                height: 120,
+                background: "linear-gradient(to bottom, #FAFBFE, #ffffff)",
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                zIndex: 0
+            }} />
         </section>
     );
 }

@@ -18,6 +18,16 @@ const phrases = [
 
 export default function HeroSection({ }: HeroSectionProps) {
     const [currentPhrase, setCurrentPhrase] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 991);
+        };
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -144,62 +154,64 @@ export default function HeroSection({ }: HeroSectionProps) {
                         </div>
                     </motion.div>
 
-                    <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="hero-dashboard">
-                        <div
-                            style={{
-                                background: "linear-gradient(135deg, #F8F9FC, #EEF2FF)",
-                                borderRadius: 20,
-                                padding: 24,
-                                border: "1px solid rgba(245,158,11,0.1)",
-                                boxShadow: "0 24px 48px rgba(245,158,11,0.08)",
-                            }}
-                        >
-                            {/* Title bar */}
-                            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-                                <div style={{ display: "flex", gap: 6 }}>
-                                    <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#EF4444" }} />
-                                    <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#F59E0B" }} />
-                                    <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#10B981" }} />
+                    {!isMobile && (
+                        <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="hero-dashboard">
+                            <div
+                                style={{
+                                    background: "linear-gradient(135deg, #F8F9FC, #EEF2FF)",
+                                    borderRadius: 20,
+                                    padding: 24,
+                                    border: "1px solid rgba(245,158,11,0.1)",
+                                    boxShadow: "0 24px 48px rgba(245,158,11,0.08)",
+                                }}
+                            >
+                                {/* Title bar */}
+                                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+                                    <div style={{ display: "flex", gap: 6 }}>
+                                        <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#EF4444" }} />
+                                        <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#F59E0B" }} />
+                                        <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#10B981" }} />
+                                    </div>
+                                    <span style={{ fontSize: "0.72rem", color: "#94A3B8", marginLeft: 8 }}>RealEase Dashboard</span>
                                 </div>
-                                <span style={{ fontSize: "0.72rem", color: "#94A3B8", marginLeft: 8 }}>RealEase Dashboard</span>
-                            </div>
-                            {/* Mock stats */}
-                            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10, marginBottom: 14 }}>
-                                {[
-                                    { label: "Active Leads", val: "247", color: "#F59E0B" },
-                                    { label: "Appointments", val: "18", color: "#10B981" },
-                                    { label: "Campaigns", val: "6", color: "#7C3AED" },
-                                ].map((m) => (
-                                    <div key={m.label} style={{ background: "white", borderRadius: 12, padding: "14px 12px", textAlign: "center" }}>
-                                        <p style={{ fontSize: "1.3rem", fontWeight: 800, color: m.color, fontFamily: "var(--font-dm-sans)" }}>{m.val}</p>
-                                        <p style={{ fontSize: "0.65rem", color: "#94A3B8" }}>{m.label}</p>
-                                    </div>
-                                ))}
-                            </div>
-                            {/* Mock lead list */}
-                            <div style={{ background: "white", borderRadius: 12, padding: 14 }}>
-                                <p style={{ fontSize: "0.72rem", fontWeight: 700, color: "#0F172A", marginBottom: 10 }}>Recent Leads</p>
-                                {[
-                                    { name: "Sarah M.", status: "Hot", time: "2m ago", sc: "#EF4444" },
-                                    { name: "John D.", status: "Warm", time: "15m ago", sc: "#F59E0B" },
-                                    { name: "Alex T.", status: "New", time: "1h ago", sc: "#F59E0B" },
-                                ].map((lead) => (
-                                    <div key={lead.name} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 0", borderBottom: "1px solid #F1F5F9" }}>
-                                        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                                            <div style={{ width: 28, height: 28, borderRadius: "50%", background: `${lead.sc}14`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                                <Users size={12} style={{ color: lead.sc }} />
+                                {/* Mock stats */}
+                                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10, marginBottom: 14 }}>
+                                    {[
+                                        { label: "Active Leads", val: "247", color: "#F59E0B" },
+                                        { label: "Appointments", val: "18", color: "#10B981" },
+                                        { label: "Campaigns", val: "6", color: "#7C3AED" },
+                                    ].map((m) => (
+                                        <div key={m.label} style={{ background: "white", borderRadius: 12, padding: "14px 12px", textAlign: "center" }}>
+                                            <p style={{ fontSize: "1.3rem", fontWeight: 800, color: m.color, fontFamily: "var(--font-dm-sans)" }}>{m.val}</p>
+                                            <p style={{ fontSize: "0.65rem", color: "#94A3B8" }}>{m.label}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                                {/* Mock lead list */}
+                                <div style={{ background: "white", borderRadius: 12, padding: 14 }}>
+                                    <p style={{ fontSize: "0.72rem", fontWeight: 700, color: "#0F172A", marginBottom: 10 }}>Recent Leads</p>
+                                    {[
+                                        { name: "Sarah M.", status: "Hot", time: "2m ago", sc: "#EF4444" },
+                                        { name: "John D.", status: "Warm", time: "15m ago", sc: "#F59E0B" },
+                                        { name: "Alex T.", status: "New", time: "1h ago", sc: "#F59E0B" },
+                                    ].map((lead) => (
+                                        <div key={lead.name} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 0", borderBottom: "1px solid #F1F5F9" }}>
+                                            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                                                <div style={{ width: 28, height: 28, borderRadius: "50%", background: `${lead.sc}14`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                                    <Users size={12} style={{ color: lead.sc }} />
+                                                </div>
+                                                <span style={{ fontSize: "0.78rem", fontWeight: 600, color: "#0F172A" }}>{lead.name}</span>
                                             </div>
-                                            <span style={{ fontSize: "0.78rem", fontWeight: 600, color: "#0F172A" }}>{lead.name}</span>
+                                            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                                <span style={{ fontSize: "0.65rem", fontWeight: 700, color: lead.sc, background: `${lead.sc}12`, padding: "2px 8px", borderRadius: 6 }}>{lead.status}</span>
+                                                <span style={{ fontSize: "0.62rem", color: "#94A3B8" }}>{lead.time}</span>
+                                            </div>
                                         </div>
-                                        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                            <span style={{ fontSize: "0.65rem", fontWeight: 700, color: lead.sc, background: `${lead.sc}12`, padding: "2px 8px", borderRadius: 6 }}>{lead.status}</span>
-                                            <span style={{ fontSize: "0.62rem", color: "#94A3B8" }}>{lead.time}</span>
-                                        </div>
-                                    </div>
-                                ))}
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                    </motion.div>
+                        </motion.div>
+                    )}
                 </div>
             </div>
 
@@ -226,6 +238,7 @@ export default function HeroSection({ }: HeroSectionProps) {
                         display: flex;
                         flex-direction: column;
                         align-items: center;
+                        width: 100%;
                     }
 
                     .hero-logo-row {
@@ -238,26 +251,28 @@ export default function HeroSection({ }: HeroSectionProps) {
                         height: auto !important;
                         min-height: 120px;
                         position: relative !important;
+                        width: 100%;
                     }
 
                     .headline-container h1 {
                         position: relative !important;
                         left: 0 !important;
+                        text-align: center;
                     }
 
                     .hero-description {
                         margin-left: auto;
                         margin-right: auto;
+                        text-align: center;
                     }
 
                     .hero-buttons {
                         justify-content: center;
+                        width: 100%;
                     }
 
                     .hero-dashboard {
-                        max-width: 500px;
-                        margin: 0 auto;
-                        width: 100%;
+                        display: none !important;
                     }
                 }
 
@@ -272,6 +287,17 @@ export default function HeroSection({ }: HeroSectionProps) {
                     }
                 }
             `}</style>
+
+            {/* Smooth transition to LeadFlowSection */}
+            <div style={{
+                height: 200, // Changed from 120 to 200
+                background: "linear-gradient(to bottom, #ffffff, #FAFBFE)",
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                zIndex: 0
+            }} />
         </section>
     );
 }
