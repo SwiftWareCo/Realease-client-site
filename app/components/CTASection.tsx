@@ -9,14 +9,28 @@ interface CTASectionProps {
 
 export default function CTASection({ }: CTASectionProps) {
     return (
-        <section style={{ padding: "100px 24px", background: "#0F172A" }}>
-            <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
+        <section style={{
+            padding: "60px 24px 100px",
+            background: "#FDF1E3",
+            position: "relative",
+            overflow: "hidden"
+        }}>
+            {/* Grid pattern overlay */}
+            <div style={{
+                position: "absolute",
+                inset: 0,
+                backgroundImage: "linear-gradient(rgba(245,158,11,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(245,158,11,0.04) 1px, transparent 1px)",
+                backgroundSize: "60px 60px",
+                pointerEvents: "none"
+            }} />
+
+            <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
                 <Reveal>
-                    <p style={{ fontSize: "0.85rem", fontWeight: 600, color: "rgba(255,255,255,0.5)", marginBottom: 20 }}>Join 500+ Realtors Already Using RealEase</p>
-                    <h2 className="cta-heading" style={{ fontFamily: "var(--font-dm-sans)", color: "white", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", marginBottom: 16, whiteSpace: "nowrap" }}>
+                    <p style={{ fontSize: "0.85rem", fontWeight: 600, color: "rgba(15,23,42,0.5)", marginBottom: 20 }}>Join 500+ Realtors Already Using RealEase</p>
+                    <h2 className="cta-heading" style={{ fontFamily: "var(--font-dm-sans)", color: "#0F172A", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", marginBottom: 16, whiteSpace: "nowrap" }}>
                         Ready to Close More Deals with Less Effort?
                     </h2>
-                    <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "1rem", maxWidth: 500, margin: "0 auto 36px", lineHeight: 1.7 }}>
+                    <p style={{ color: "#475569", fontSize: "1rem", maxWidth: 500, margin: "0 auto 36px", lineHeight: 1.7 }}>
                         See how AI transforms your lead management, follow-ups, and deal flow — in just 30 minutes.
                     </p>
                     <CalendlyButton
@@ -38,7 +52,7 @@ export default function CTASection({ }: CTASectionProps) {
                     </CalendlyButton>
                     <div className="cta-stats" style={{ display: "flex", gap: 20, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
                         {["Free 14-day trial", "No credit card", "Cancel anytime"].map((item) => (
-                            <span key={item} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: "0.8rem", color: "rgba(255,255,255,0.5)" }}>
+                            <span key={item} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: "0.8rem", color: "rgba(15,23,42,0.5)" }}>
                                 <Check size={14} style={{ color: "#F59E0B" }} /> {item}
                             </span>
                         ))}

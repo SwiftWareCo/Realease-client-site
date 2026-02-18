@@ -47,12 +47,23 @@ export default function Footer() {
     return (
         <footer
             style={{
-                background: "#0F172A",
-                color: "white",
+                background: "#FDF1E3",
+                color: "#0F172A",
                 padding: "80px 24px 40px",
+                position: "relative",
+                overflow: "hidden"
             }}
         >
-            <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+            {/* Grid pattern overlay overlay */}
+            <div style={{
+                position: "absolute",
+                inset: 0,
+                backgroundImage: "linear-gradient(rgba(245,158,11,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(245,158,11,0.03) 1px, transparent 1px)",
+                backgroundSize: "60px 60px",
+                pointerEvents: "none"
+            }} />
+
+            <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
                 <div
                     className="footer-grid"
                     style={{
@@ -77,7 +88,7 @@ export default function Footer() {
                         <p
                             style={{
                                 fontSize: "0.875rem",
-                                color: "#94A3B8",
+                                color: "#475569",
                                 lineHeight: 1.7,
                                 maxWidth: 260,
                             }}
@@ -94,7 +105,7 @@ export default function Footer() {
                                 style={{
                                     fontSize: "0.8rem",
                                     fontWeight: 600,
-                                    color: "#64748B",
+                                    color: "#94A3B8",
                                     textTransform: "uppercase",
                                     letterSpacing: "0.08em",
                                     marginBottom: 16,
@@ -117,16 +128,16 @@ export default function Footer() {
                                             href={link.href}
                                             style={{
                                                 fontSize: "0.875rem",
-                                                color: "#CBD5E1",
+                                                color: "#475569",
                                                 textDecoration: "none",
                                                 transition: "color 0.2s",
                                                 fontFamily: "var(--font-inter), sans-serif",
                                             }}
                                             onMouseEnter={(e) =>
-                                                (e.currentTarget.style.color = "#FFFFFF")
+                                                (e.currentTarget.style.color = "#F59E0B")
                                             }
                                             onMouseLeave={(e) =>
-                                                (e.currentTarget.style.color = "#CBD5E1")
+                                                (e.currentTarget.style.color = "#475569")
                                             }
                                         >
                                             {link.name}
@@ -141,7 +152,7 @@ export default function Footer() {
                 {/* Bottom bar */}
                 <div
                     style={{
-                        borderTop: "1px solid #1E293B",
+                        borderTop: "1px solid rgba(15,23,42,0.06)",
                         paddingTop: 24,
                         display: "flex",
                         alignItems: "center",
@@ -153,7 +164,7 @@ export default function Footer() {
                     <p
                         style={{
                             fontSize: "0.8rem",
-                            color: "#64748B",
+                            color: "#94A3B8",
                         }}
                     >
                         © {currentYear} RealEase. All rights reserved.
@@ -165,15 +176,15 @@ export default function Footer() {
                                 href="#"
                                 style={{
                                     fontSize: "0.8rem",
-                                    color: "#64748B",
+                                    color: "#94A3B8",
                                     textDecoration: "none",
                                     transition: "color 0.2s",
                                 }}
                                 onMouseEnter={(e) =>
-                                    (e.currentTarget.style.color = "#FFFFFF")
+                                    (e.currentTarget.style.color = "#0F172A")
                                 }
                                 onMouseLeave={(e) =>
-                                    (e.currentTarget.style.color = "#64748B")
+                                    (e.currentTarget.style.color = "#94A3B8")
                                 }
                             >
                                 {social}

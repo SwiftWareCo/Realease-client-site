@@ -9,7 +9,7 @@ const flowSteps = [
     { icon: <UserPlus size={24} />, title: "Lead Intake", desc: "Leads are captured and entered into the system.", color: "#F59E0B" },
     { icon: <Search size={24} />, title: "AI Qualification", desc: "Leads are scored & qualified by trained AI agents.", color: "#7C3AED" },
     { icon: <Sprout size={24} />, title: "Automated Nurture", desc: "SMS & email campaigns keep leads warm.", color: "#10B981" },
-    { icon: <TrendingUp size={24} />, title: "Lead Advancement", desc: "Realtors are provided with actionable insights to advance every lead to a deal.", color: "#06B6D4" },
+    { icon: <TrendingUp size={24} />, title: "Lead Advancement", desc: "Receive actionable insights that advance every lead to a deal.", color: "#06B6D4" },
     { icon: <HeartHandshake size={24} />, title: "Deal Stage", desc: "Showings, contracts & deadlines coordinated.", color: "#F59E0B" },
     { icon: <Trophy size={24} />, title: "Closed Deal", desc: "More deals closed with less effort.", color: "#EF4444" },
 ];
