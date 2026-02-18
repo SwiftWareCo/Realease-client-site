@@ -13,7 +13,6 @@ import Navbar from "./components/Navbar";
 import DemoForm from "./components/DemoForm";
 import Footer from "./components/Footer";
 import HeroSection from "./components/HeroSection";
-import LogoCarousel from "./components/LogoCarousel";
 import LeadFlowSection from "./components/LeadFlowSection";
 import AIToolsSection from "./components/AIToolsSection";
 import ComparisonSection from "./components/ComparisonSection";
@@ -45,7 +44,6 @@ export default function Home() {
       <Navbar />
       <DemoForm isOpen={demoOpen} onClose={() => setDemoOpen(false)} />
       <HeroSection openCalendly={openCalendly} />
-      <LogoCarousel />
       <LeadFlowSection />
       <AIToolsSection scrollRotate={scrollRotate} scrollRotateReverse={scrollRotateReverse} />
       <ComparisonSection />

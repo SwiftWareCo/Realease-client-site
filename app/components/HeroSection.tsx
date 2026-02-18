@@ -119,7 +119,7 @@ export default function HeroSection({ openCalendly }: HeroSectionProps) {
                         </div>
 
                         <p style={{ fontSize: "1.05rem", color: "#64748B", lineHeight: 1.7, marginBottom: 32, maxWidth: 500 }}>
-                            RealEase does the work that <strong>keeps deals alive</strong> — so you can focus on the moments that close them.
+                            <strong>RealEase</strong> does the work that <strong>keeps deals alive</strong> — so you can focus on the moments that close them.
                         </p>
 
                         <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
